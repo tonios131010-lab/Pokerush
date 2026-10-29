@@ -13,6 +13,10 @@ enum {
   ACH_COUNT
 };
 
+/* La sauvegarde (PARAMÈTRES) : où renvoie une défaite. La partie en cours est toujours gardée pour la
+ * reprendre si l'on quitte ; JAMAIS : une défaite la termine. */
+enum { CHECKPOINT_10, CHECKPOINT_EACH, CHECKPOINT_NEVER, CHECKPOINT_COUNT };
+
 /* Débloque un succès (une seule fois) et annonce sa récompense. */
 void achieve(int id, bool *quit);
 void screen_achievements(bool *quit);

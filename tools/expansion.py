@@ -304,6 +304,7 @@ class Expansion:
                 "mega": bool(re.search(r"\.isMegaEvolution = TRUE", b)),
                 "dex": field(b, "natDexNum"),
                 "name_en": literal(field(b, "speciesName")),
+                "cry": (field(b, "cryId") or "").strip(),
                 "front": field(b, "frontPic"),
                 "back": field(b, "backPic"),
                 "palette": field(b, "palette"),

@@ -26,7 +26,10 @@ int main(void) {
   team.mon[0].item = species_stone(SPECIES_CHARIZARD);
   team.mon[1].shiny = 1;
   Pokemon offers[5];
-  uint16_t offer_sp[5] = {SPECIES_RAYQUAZA, SPECIES_DRAGAPULT, SPECIES_GHOLDENGO, SPECIES_SALAMENCE, SPECIES_CLAUDE_CODE};
+  const char *flags = getenv("DEMO");
+  /* le POKéMON secret seulement sur demande (C) : les captures publiques ne le montrent pas */
+  uint16_t offer_sp[5] = {SPECIES_RAYQUAZA, SPECIES_DRAGAPULT, SPECIES_GHOLDENGO, SPECIES_SALAMENCE,
+                          flags && strchr(flags, 'C') ? SPECIES_CLAUDE_CODE : SPECIES_TINKATON};
   for (int i = 0; i < 5; i++) offers[i] = trainer_build(offer_sp[i], 0, 7, false, &rng);
   offers[1].shiny = 1;
   int cursor = 1;

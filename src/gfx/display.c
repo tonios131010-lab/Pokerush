@@ -1,5 +1,8 @@
 #include "gfx/display.h"
 #include <eadk.h>
+#include <string.h>
+#include "platform/input.h"
+#include "platform/pc.h"
 
 #define LCD_W 320
 #define LCD_H 240
@@ -45,7 +48,7 @@ void gfx_render(int x, int y, int w, int h, draw_fn draw, const void *ctx) {
   if (x0 >= x1 || y0 >= y1) return;
   cx0 = x0, cy0 = y0, cx1 = x1, cy1 = y1;
   draw(ctx);
-  present(x0, y0, x1, y1);
+  if (!pc_present(fb, x0, y0, x1 - x0, y1 - y0)) present(x0, y0, x1, y1); /* PC : la fenêtre s'en charge */
 }
 
 static int saved_clip[4];
@@ -306,6 +309,19 @@ static uint16_t next_char(const char **s) {
   return (uint16_t)((p[0] & 0x0F) << 12 | (p[1] & 0x3F) << 6 | (p[2] & 0x3F));
 }
 
+/* {OK}, {BACK}, {ALT}, {EXE} dans un texte : le nom de la touche (input.c), qui dépend de la
+ * calculatrice, du clavier ou de la manette. Renvoie ce nom et avance *s, ou NULL. */
+static const char *key_token(const char **s) {
+  static const struct { const char *tok; uint16_t key; } keys[] = {
+      {"{OK}", KEY_OK}, {"{BACK}", KEY_BACK}, {"{ALT}", KEY_ALT}, {"{EXE}", KEY_EXE}};
+  if (**s != '{') return 0;
+  for (unsigned i = 0; i < sizeof keys / sizeof keys[0]; i++) {
+    size_t n = strlen(keys[i].tok);
+    if (!strncmp(*s, keys[i].tok, n)) return *s += n, key_label(keys[i].key);
+  }
+  return 0;
+}
+
 static const Glyph *find_glyph(const Font *f, uint16_t c) {
   int lo = 0, hi = f->count - 1;
   while (lo <= hi) {
@@ -336,6 +352,11 @@ int gfx_text_n(const Font *f, int x, int y, const char *s, int n, uint16_t fg, u
   const uint16_t ink[3] = {0, fg, shadow};
   int left = x;
   for (; *s && n != 0; n--) {
+    const char *key = key_token(&s);
+    if (key) {
+      x = gfx_text_n(f, x, y, key, -1, fg, shadow);
+      continue;
+    }
     uint16_t c = next_char(&s);
     if (c == '\n') {
       x = left, y += f->line;
@@ -352,6 +373,11 @@ int gfx_text_n(const Font *f, int x, int y, const char *s, int n, uint16_t fg, u
 
 int gfx_text_big(const Font *f, int x, int y, const char *s, uint16_t fg, uint16_t shadow) {
   while (*s) {
+    const char *key = key_token(&s);
+    if (key) {
+      x = gfx_text_big(f, x, y, key, fg, shadow);
+      continue;
+    }
     uint16_t c = next_char(&s);
     if (c == ' ') {
       x += 2 * f->space;
@@ -373,6 +399,12 @@ int gfx_text_big(const Font *f, int x, int y, const char *s, uint16_t fg, uint16
 int text_width(const Font *f, const char *s) {
   int x = 0, best = 0;
   while (*s) {
+    const char *key = key_token(&s);
+    if (key) {
+      x += text_width(f, key);
+      best = imax(best, x);
+      continue;
+    }
     uint16_t c = next_char(&s);
     if (c == '\n') x = 0;
     else x += c == ' ' ? f->space : find_glyph(f, c)->w;
@@ -383,7 +415,10 @@ int text_width(const Font *f, const char *s) {
 
 int text_length(const char *s) {
   int n = 0;
-  while (*s) next_char(&s), n++;
+  while (*s) {
+    if (!key_token(&s)) next_char(&s);
+    n++;
+  }
   return n;
 }
 

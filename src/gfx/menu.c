@@ -1,6 +1,7 @@
 #include "gfx/menu.h"
 #include "gfx/widgets.h"
 #include "platform/input.h"
+#include "platform/pc.h"
 
 #define LIST_Y 18
 #define FULL_H (SCREEN_H - LIST_Y - FOOTER_H - 2)
@@ -75,7 +76,7 @@ static void draw(const void *ctx) {
     ui_window(x, LIST_Y, SCREEN_W - x - 2, FULL_H);
     m->detail(m->ctx, m->cursor, x + 6, LIST_Y + 5, SCREEN_W - x - 14, FULL_H - 10);
   }
-  ui_footer(m->help ? m->help : L("↑↓ choisir   OK valider   RETOUR annuler", "↑↓ select   OK confirm   BACK cancel"));
+  ui_footer(m->help ? m->help : L("↑↓ choisir   {OK} valider   {BACK} annuler", "↑↓ select   {OK} confirm   {BACK} cancel"));
 }
 
 int menu_run(Menu *m, bool *quit) {
@@ -86,16 +87,17 @@ int menu_run(Menu *m, bool *quit) {
   for (;;) {
     uint16_t k = input_wait_frame();
     if (k & KEY_HOME) return *quit = true, MENU_BACK;
-    if ((k & KEY_BACK) && !m->no_back) return MENU_BACK;
-    if ((k & KEY_ALT) && m->alt) return MENU_ALT;
-    if ((k & KEY_EXE) && m->exe) return MENU_EXE;
-    if (k & KEY_OK) return m->cursor;
+    if ((k & KEY_BACK) && !m->no_back) return pc_sfx(SFX_BACK), MENU_BACK;
+    if ((k & KEY_ALT) && m->alt) return pc_sfx(SFX_SELECT), MENU_ALT;
+    if ((k & KEY_EXE) && m->exe) return pc_sfx(SFX_SELECT), MENU_EXE;
+    if (k & KEY_OK) return pc_sfx(SFX_SELECT), m->cursor;
     int c = m->cursor + ((k & KEY_DOWN) ? 1 : 0) - ((k & KEY_UP) ? 1 : 0);
     if (k & KEY_RIGHT) c = m->cursor + visible(m) < m->n ? m->cursor + visible(m) : m->n - 1;
     if (k & KEY_LEFT) c = m->cursor - visible(m) > 0 ? m->cursor - visible(m) : 0;
     if (c < 0) c = m->n - 1; /* la liste boucle */
     if (c >= m->n) c = 0;
     if (c == m->cursor) continue;
+    pc_sfx(SFX_CURSOR);
     m->cursor = c;
     if (c < v.top) v.top = c;
     if (c >= v.top + visible(m)) v.top = c - visible(m) + 1;
@@ -151,9 +153,9 @@ bool menu_confirm(const char *question, bool *quit) {
   for (;;) {
     uint16_t k = input_wait_frame();
     if (k & KEY_HOME) return *quit = true, false;
-    if (k & KEY_BACK) return false;
-    if (k & KEY_OK) return b.choice == 0;
-    if (k & (KEY_UP | KEY_DOWN)) b.choice ^= 1, gfx_render(SCREEN_W - 56, SCREEN_H - b.h - 44, 54, 42, draw_box, &b);
+    if (k & KEY_BACK) return pc_sfx(SFX_BACK), false;
+    if (k & KEY_OK) return pc_sfx(SFX_SELECT), b.choice == 0;
+    if (k & (KEY_UP | KEY_DOWN)) pc_sfx(SFX_CURSOR), b.choice ^= 1, gfx_render(SCREEN_W - 56, SCREEN_H - b.h - 44, 54, 42, draw_box, &b);
   }
 }
 
@@ -163,6 +165,6 @@ void menu_message(const char *text, bool *quit) {
   for (;;) {
     uint16_t k = input_wait_frame();
     if (k & KEY_HOME) return (void)(*quit = true);
-    if (k & (KEY_OK | KEY_BACK)) return;
+    if (k & (KEY_OK | KEY_BACK)) return pc_sfx(SFX_SELECT);
   }
 }

@@ -1,5 +1,11 @@
 #include "platform/input.h"
 #include <eadk.h>
+#include "game/pokemon.h"
+#include "platform/pc.h"
+
+#define ARROWS (KEY_LEFT | KEY_UP | KEY_DOWN | KEY_RIGHT)
+#define REPEAT_DELAY 20 /* images avant qu'une flèche maintenue se répète */
+#define REPEAT_EVERY 5
 
 static uint16_t held;
 
@@ -18,6 +24,13 @@ uint16_t input_poll(void) {
    * pas, sinon elles choisiraient tout de suite la première ligne du premier menu. */
   static bool primed;
   uint16_t pressed = primed ? now & (uint16_t)~held : 0;
+  /* une flèche maintenue se répète, pour parcourir vite les listes */
+  static int hold_frames;
+  if ((now & ARROWS) && (now & ARROWS) == (held & ARROWS)) {
+    if (++hold_frames >= REPEAT_DELAY && (hold_frames - REPEAT_DELAY) % REPEAT_EVERY == 0) pressed |= now & ARROWS;
+  } else {
+    hold_frames = 0;
+  }
   primed = true;
   held = now;
   return pressed;
@@ -26,4 +39,16 @@ uint16_t input_poll(void) {
 uint16_t input_wait_frame(void) {
   eadk_timing_msleep(16);
   return input_poll();
+}
+
+const char *key_label(uint16_t key) {
+  const char *pc = pc_key_label(key);
+  if (pc) return pc;
+  switch (key) {
+    case KEY_OK: return "OK";
+    case KEY_BACK: return L("RETOUR", "BACK");
+    case KEY_ALT: return "SHIFT";
+    case KEY_EXE: return "EXE";
+    default: return "?";
+  }
 }

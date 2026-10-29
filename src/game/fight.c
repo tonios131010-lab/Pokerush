@@ -12,6 +12,7 @@
 #include "gfx/ui.h"
 #include "gfx/widgets.h"
 #include "platform/input.h"
+#include "platform/pc.h"
 
 static BattleView view;
 static Battle *bt;
@@ -117,6 +118,7 @@ static void slide_hp(int s, uint16_t target) {
 }
 
 static void sparkle(int s) {
+  pc_sfx(SFX_SHINY);
   for (int t = 24; t > 0 && !quit && !skip; t -= dex.fast ? 2 : 1) {
     view.sparkle[s] = (uint8_t)t;
     ui_draw_scene(&view);
@@ -149,8 +151,11 @@ static void move_anim(int s, uint16_t move, int to) {
   ui_draw_scene(&view);
 }
 
-/* Touché : le sprite clignote. */
-static void hit_anim(int s) {
+/* Touché : le sprite clignote. Sur PC, un bruit (plus fort si c'est super efficace) et, si c'est un
+ * Pokémon du joueur, la manette vibre. */
+static void hit_anim(int s, int sound) {
+  pc_sfx(sound);
+  if (POS_SIDE(s) == SIDE_PLAYER) pc_rumble(sound == SFX_HIT_SUPER ? 200 : sound == SFX_HIT_WEAK ? 70 : 130, 180);
   if (!animate()) return;
   for (int t = 0; t < 6 && !quit; t++) {
     view.hide[s] = !(t & 1);
@@ -189,6 +194,8 @@ static void faint_anim(int s) {
 static void mega_anim(int s, uint16_t form) {
   BattleSide *v = view_side(s);
   uint16_t base = v->species;
+  pc_sfx(SFX_MEGA);
+  if (POS_SIDE(s) == SIDE_PLAYER) pc_rumble(160, 600);
   if (dex.anim && !skip) {
     for (int t = 0; t < 48 && !quit && !skip; t += dex.fast ? 2 : 1) {
       int period = t < 16 ? 8 : t < 32 ? 4 : 2;
@@ -226,7 +233,15 @@ static void play_events(void) {
       case EV_HP:
         if (e->value < v->hp) {
           if (POS_SIDE(e->side) == SIDE_FOE) run_stats.damage += (uint32_t)(v->hp - e->value);
-          hit_anim(e->side);
+          /* le message qui suit dit si c'est super efficace ou peu efficace */
+          int sound = SFX_HIT;
+          for (int k = i + 1; k < bt->nevents && k <= i + 3; k++) {
+            const char *t = bt->events[k].text;
+            if (bt->events[k].kind != EV_TEXT) continue;
+            if (strstr(t, L("super efficace", "super effective"))) sound = SFX_HIT_SUPER;
+            if (strstr(t, L("pas très", "not very"))) sound = SFX_HIT_WEAK;
+          }
+          hit_anim(e->side, sound);
         }
         slide_hp(e->side, e->value);
         break;
@@ -246,6 +261,7 @@ static void play_events(void) {
               break;
             }
         if (POS_SIDE(e->side) == SIDE_FOE) dex_see(v->species);
+        pc_cry(v->species);
         if (i + 1 < bt->nevents && bt->events[i + 1].kind == EV_HP && bt->events[i + 1].side == e->side)
           v->hp = bt->events[++i].value;
         count_foes();
@@ -266,6 +282,8 @@ static void play_events(void) {
         ui_draw_battle(&view);
         break;
       case EV_FAINT:
+        pc_cry(v->species);
+        if (POS_SIDE(e->side) == SIDE_PLAYER) pc_rumble(255, 400);
         if (POS_SIDE(e->side) == SIDE_FOE) {
           run_stats.kos++;
           if (species_info[v->species].is_mega) fight_feats |= FEAT_MEGA_KO;
@@ -568,8 +586,10 @@ uint8_t fight_run(Battle *b, const Trainer *t, uint16_t number) {
     play_events();
   }
   if (!quit && b->result == BATTLE_WON && t->wild) {
+    pc_music(MUSIC_VICTORY_TRAINER);
     say(L("Le POKéMON légendaire\nrejoint le draft !", "The legendary POKéMON\njoins the draft!"));
   } else if (!quit && b->result == BATTLE_WON) { /* le dresseur revient, vaincu */
+    pc_music(number == 100 ? MUSIC_VICTORY_LEAGUE : t->boss ? MUSIC_VICTORY_GYM : MUSIC_VICTORY_TRAINER);
     view.show_trainer = true;
     ui_draw_battle(&view);
     say(strcat(strcat(strcpy(line, L("Vous avez battu\n", "You defeated\n")), t->name), " !"));

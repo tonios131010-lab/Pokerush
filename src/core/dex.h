@@ -22,7 +22,8 @@ typedef struct {
   uint8_t tuto;          /* tutoriel déjà vu */
   uint8_t singles;       /* combats en simple plutôt qu'en duo (format VGC) */
   uint8_t lang;          /* langue des textes : 0 français, 1 anglais */
-  uint8_t reserved[31]; /* pour les versions suivantes : la taille du fichier ne change pas */
+  uint8_t checkpoint;    /* où renvoie une défaite : CHECKPOINT_* (game/meta.h) */
+  uint8_t reserved[30]; /* pour les versions suivantes : la taille du fichier ne change pas */
 } Dex;
 
 extern Dex dex;

@@ -5,7 +5,8 @@
 #   make run        installe sur la calculatrice branchée en USB (nwlink)
 #   make assets     régénère build/gen/ depuis assets/ et data/ (Python 3 + Pillow)
 #   make top        les 30 plus gros symboles (où part la flash)
-#   make sim        version PC (build/sim/pokerush) avec captures d'écran : voir sim/eadk_host.c
+#   make sim        version PC (build/sim/pokerush) : la fenêtre, la manette et le son (voir sim/), ou
+#                   des captures d'écran avec SIM_SCRIPT ; la version à distribuer : tools/build_pc.py
 #   make clean
 #   make DEBUG=1    -Og -g, sans LTO (pour lire le .map et les symboles)
 #
@@ -155,10 +156,10 @@ SIM_LIBS += -luser32 -lgdi32
 endif
 .PHONY: sim
 sim: $(BUILD)/sim/$(APP)
-$(BUILD)/sim/$(APP): $(SRC) $(GEN_SRC) sim/eadk_host.c sim/eadk.h $(wildcard src/*/*.h) | $(GEN_STAMP)
+$(BUILD)/sim/$(APP): $(SRC) $(GEN_SRC) $(wildcard sim/*.c sim/*.h) $(wildcard src/*/*.h) | $(GEN_STAMP)
 	@mkdir -p $(@D)
 	@echo "SIM     $@"
-	$(Q)$(HOSTCC) $(SIM_CFLAGS) $(SRC) $(GEN_SRC) sim/eadk_host.c $(SIM_LIBS) -o $@
+	$(Q)$(HOSTCC) $(SIM_CFLAGS) -DPOKERUSH_PC $(SRC) $(GEN_SRC) $(wildcard sim/*.c) $(SIM_LIBS) -lwinmm -o $@
 
 # Tests sur PC : la sauvegarde (Base64, fichiers d'Epsilon, pokemon.py) et les données générées.
 .PHONY: test

@@ -20,5 +20,8 @@ enum {
 uint16_t input_poll(void);
 /* Attend une image (~16 ms) puis lit le clavier. */
 uint16_t input_wait_frame(void);
+/* Le nom de la touche à afficher (« OK », « EXE », « ENTRÉE », « A »… selon la calculatrice, le
+ * clavier ou la manette du PC). Dans un texte, {OK} {BACK} {ALT} {EXE} l'écrivent (display.c). */
+const char *key_label(uint16_t key);
 
 #endif

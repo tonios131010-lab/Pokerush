@@ -6,6 +6,7 @@
 #include "gfx/menu.h"
 #include "gfx/widgets.h"
 #include "platform/input.h"
+#include "platform/pc.h"
 
 #define COUNT(a) (int)(sizeof(a) / sizeof((a)[0]))
 
@@ -128,21 +129,24 @@ void screen_achievements(bool *quit) {
 
 /* ------------------------------------------------------------------------- paramètres */
 
-enum { SET_LANG, SET_FORMAT, SET_ANIM, SET_FAST, SET_CHOICE, SET_THEME, SET_AVATAR, SET_BUBBLE, SET_TUTO, SET_COUNT };
+enum { SET_LANG, SET_FORMAT, SET_SAVE, SET_ANIM, SET_FAST, SET_CHOICE, SET_THEME, SET_AVATAR, SET_BUBBLE, SET_TUTO, SET_COUNT };
 
 static void settings_detail(const void *ctx, int i, int x, int y, int w, int h) {
   (void)ctx, (void)h;
   const char *const help[SET_COUNT] = {
       L("Langue du jeu : FRANÇAIS ou ENGLISH. / Game language.", "Game language: FRANÇAIS or ENGLISH. / Langue du jeu."),
       L("DUO : 2 contre 2 au format VGC, 4 POKéMON choisis avant chaque combat. SIMPLE : 1 contre 1, toute l'équipe.", "DOUBLE: 2 against 2 in VGC format, 4 POKéMON chosen before each battle. SINGLE: 1 against 1, the whole team."),
+      L("Défaite : retour au palier de 10 combats, au combat perdu, ou fin de partie.",
+        "After a loss: back to the last 10-battle checkpoint, to the lost battle, or game over."),
       L("Attaques, K.O. et Méga-Évolution animés.", "Animated moves, fainting and Mega Evolution."),
-      L("Textes et animations deux fois plus rapides. En combat, Retour passe les animations.", "Text and animations twice as fast. In battle, Back skips animations."),
+      L("Textes et animations deux fois plus rapides. En combat, {BACK} passe les animations.", "Text and animations twice as fast. In battle, {BACK} skips animations."),
       L("En simple. CHOIX : quand l'adversaire envoie un POKéMON, vous pouvez changer le vôtre. DÉFINI : jamais.", "In singles. SHIFT: when the foe sends out a POKéMON, you may switch yours. SET: never."),
       L("Couleur des menus. Les succès en débloquent d'autres.", "Menu colors. Achievements unlock more."),
       L("Le personnage de l'écran titre et du Hall of Fame.", "The character on the title screen and in the Hall of Fame."),
       L("Boîte de dialogue claire, débloquée par un succès.", "Light dialog box, unlocked by an achievement."),
       L("Revoir les règles propres à PokeRush.", "See PokeRush's own rules again.")};
-  ui_wrap_lines(&font_small, x, y - 2, w - (i == SET_AVATAR ? 40 : 0), 10, 3, help[i], INK_DARK, INK_DARK_SHADOW);
+  const char *text = i < SET_COUNT ? help[i] : pc_setting_help(i - SET_COUNT); /* PC : affichage, son, manette */
+  ui_wrap_lines(&font_small, x, y - 2, w - (i == SET_AVATAR ? 40 : 0), 10, 3, text, INK_DARK, INK_DARK_SHADOW);
   if (i == SET_AVATAR) { /* le personnage, en buste */
     const Image *im = &trainer_pic[avatar_pic()];
     gfx_clip_push(x + w - 36, y - 4, 40, 40);
@@ -160,12 +164,18 @@ static uint8_t next_unlocked(uint8_t kind, uint8_t cur, uint8_t count) {
 }
 
 void screen_settings(bool *quit) {
-  static char lines[SET_COUNT][48];
-  const char *items[SET_COUNT];
-  Menu m = {.title = "PARAMÈTRES", .n = SET_COUNT, .items = items, .detail = settings_detail, .hue = 1, .detail_below = true};
+#define PC_MAX 24
+  static char lines[SET_COUNT + PC_MAX][48];
+  const char *items[SET_COUNT + PC_MAX];
+  int pcn = pc_setting_count() < PC_MAX ? pc_setting_count() : PC_MAX;
+  Menu m = {.title = "PARAMÈTRES", .n = SET_COUNT + pcn, .items = items, .detail = settings_detail, .hue = 1,
+            .detail_below = true};
   for (;;) {
     strcat(strcpy(lines[SET_LANG], "Langue / Language : "), lang ? "ENGLISH" : "FRANÇAIS");
     strcat(strcpy(lines[SET_FORMAT], L("Combats : ", "Battles: ")), dex.singles ? L("SIMPLE", "SINGLE") : L("DUO (VGC)", "DOUBLE (VGC)"));
+    const char *saves[CHECKPOINT_COUNT] = {L("TOUS LES 10 COMBATS", "EVERY 10 BATTLES"), L("À CHAQUE COMBAT", "EVERY BATTLE"),
+                                           L("JAMAIS", "NEVER")};
+    strcat(strcpy(lines[SET_SAVE], L("Sauvegarde : ", "Checkpoints: ")), saves[dex.checkpoint % CHECKPOINT_COUNT]);
     strcat(strcpy(lines[SET_ANIM], L("Animations de combat : ", "Battle animations: ")), dex.anim ? L("OUI", "ON") : L("NON", "OFF"));
     strcat(strcpy(lines[SET_FAST], L("Vitesse : ", "Speed: ")), dex.fast ? L("RAPIDE (×2)", "FAST (×2)") : L("NORMALE", "NORMAL"));
     strcat(strcpy(lines[SET_CHOICE], L("Changement : ", "Battle style: ")), dex.choice ? L("CHOIX", "SHIFT") : L("DÉFINI", "SET"));
@@ -173,7 +183,8 @@ void screen_settings(bool *quit) {
     strcat(strcpy(lines[SET_AVATAR], L("Personnage : ", "Character: ")), avatar_names[lang][dex.avatar % 10]);
     strcat(strcpy(lines[SET_BUBBLE], L("Boîte de dialogue : ", "Dialog box: ")), dex.bubble ? L("CLAIRE", "LIGHT") : L("CLASSIQUE", "CLASSIC"));
     strcpy(lines[SET_TUTO], L("Revoir le tutoriel", "Replay the tutorial"));
-    for (int i = 0; i < SET_COUNT; i++) items[i] = lines[i];
+    for (int i = 0; i < pcn; i++) pc_setting_line(i, lines[SET_COUNT + i], sizeof lines[0]);
+    for (int i = 0; i < SET_COUNT + pcn; i++) items[i] = lines[i];
     m.title = L("PARAMÈTRES", "SETTINGS");
     int c = menu_run(&m, quit);
     if (c < 0 || *quit) break;
@@ -181,6 +192,7 @@ void screen_settings(bool *quit) {
     switch (c) {
       case SET_LANG: dex.lang ^= 1; break;
       case SET_FORMAT: dex.singles ^= 1; break;
+      case SET_SAVE: dex.checkpoint = (uint8_t)((dex.checkpoint + 1) % CHECKPOINT_COUNT); break;
       case SET_ANIM: dex.anim ^= 1; break;
       case SET_FAST: dex.fast ^= 1; break;
       case SET_CHOICE: dex.choice ^= 1; break;
@@ -191,6 +203,7 @@ void screen_settings(bool *quit) {
         else menu_message(L("Débloqué par le succès\n“Coup de maître”.", "Unlocked by the achievement\n“Masterstroke”."), quit);
         break;
       case SET_TUTO: tutorial(quit); break;
+      default: pc_setting_change(c - SET_COUNT); break;
     }
     settings_apply();
   }
@@ -201,13 +214,13 @@ void screen_settings(bool *quit) {
 
 static const char *const tuto[][4] = {
     {"BIENVENUE !", "Enchaînez les combats contre des dresseurs. Après chaque victoire, choisissez UNE récompense : "
-                    "RECRUTER un des POKéMON proposés ou ENTRAÎNER un membre. Tous les 10 combats, un palier sauvegarde.",
+                    "RECRUTER un des POKéMON proposés ou ENTRAÎNER un membre. La partie se sauvegarde (voir PARAMÈTRES).",
      "WELCOME!", "Battle one trainer after another. After each victory, choose ONE reward: RECRUIT one of the offered "
-                 "POKéMON or TRAIN a member. Every 10 battles, a checkpoint saves the game."},
+                 "POKéMON or TRAIN a member. Checkpoints: see SETTINGS."},
     {"PRÉPARATION", "Après la récompense, le menu de préparation s'ouvre : objets, ordre de l'équipe, Carnet… "
-                    "Appuyez sur EXE pour lancer le combat suivant. Pendant le choix, shift ouvre ce menu.",
-     "GETTING READY", "After the reward, the preparation menu opens: items, team order, POKéDEX… Press EXE to start the "
-                      "next battle. While choosing the reward, shift opens this menu."},
+                    "Appuyez sur {EXE} pour lancer le combat suivant. Pendant le choix, {ALT} ouvre ce menu.",
+     "GETTING READY", "After the reward, the preparation menu opens: items, team order, POKéDEX… Press {EXE} to start the "
+                      "next battle. While choosing the reward, {ALT} opens this menu."},
     {"LES RÉSONANCES", "Quand 3 POKéMON ou plus de l'équipe partagent un type, il RÉSONNE (niveau I à III). Chaque type a "
                        "son effet : soin pour l'Eau, critiques pour la Roche, brûlures pour le Feu…",
      "RESONANCES", "When 3 or more team members share a type, it RESONATES (level I to III). Each type has its own "
@@ -225,17 +238,17 @@ static const char *const tuto[][4] = {
                        "POKéMON.",
      "DOUBLE BATTLES", "Battles are 2 against 2. Just before, you see the 6 opposing POKéMON and choose the 4 that will "
                        "fight: the first 2 lead. Earthquake and Surf hit several POKéMON."},
-    {"MÉGA ET OBJETS", "Le MÉGA-ANNEAU arrive au combat 10 : shift dans le menu des attaques. L'ÉCHO-PRISME compte "
+    {"MÉGA ET OBJETS", "Le MÉGA-ANNEAU arrive au combat 10 : {ALT} dans le menu des attaques. L'ÉCHO-PRISME compte "
                        "double pour les Résonances.",
-     "MEGA AND ITEMS", "The MEGA RING comes at battle 10: shift in the move menu. The ECHO PRISM counts double for "
+     "MEGA AND ITEMS", "The MEGA RING comes at battle 10: {ALT} in the move menu. The ECHO PRISM counts double for "
                        "Resonances."},
     {"CARNET ET SUCCÈS", "Le CARNET garde les POKéMON vus et obtenus : tous les 50, un objet offert au départ. Les "
                          "SUCCÈS débloquent thèmes et personnages.",
      "POKéDEX & GOALS", "The POKéDEX keeps the POKéMON seen and obtained: every 50, a free item at the start. "
                         "ACHIEVEMENTS unlock themes and characters."},
-    {"COMMANDES", "OK : valider, accélérer le texte. Retour : annuler, passer les animations. Shift : Méga-Évolution, "
-                  "menu du draft. EXE : combat suivant. Langue et vitesse : PARAMÈTRES.",
-     "CONTROLS", "OK: confirm, speed up text. Back: cancel, skip animations. Shift: Mega Evolution, draft menu. EXE: "
+    {"COMMANDES", "{OK} : valider, accélérer le texte. {BACK} : annuler, passer les animations. {ALT} : Méga-Évolution, "
+                  "menu du draft. {EXE} : combat suivant. Langue et vitesse : PARAMÈTRES.",
+     "CONTROLS", "{OK}: confirm, speed up text. {BACK}: cancel, skip animations. {ALT}: Mega Evolution, draft menu. {EXE}: "
                  "next battle. Language and speed: SETTINGS."},
 };
 
@@ -248,7 +261,7 @@ static void draw_tuto(const void *ctx) {
   ui_window(6, 20, SCREEN_W - 12, 126);
   gfx_text(&font_normal, 14, 23, tuto[p][2 * lang], INK_BLUE, INK_DARK_SHADOW);
   ui_wrap_lines(&font_normal, 14, 39, SCREEN_W - 28, 14, 7, tuto[p][2 * lang + 1], INK_DARK, INK_DARK_SHADOW);
-  ui_footer(L("OK / → suite   ← précédent   RETOUR passer", "OK / → next   ← previous   BACK skip"));
+  ui_footer(L("{OK} / → suite   ← précédent   {BACK} passer", "{OK} / → next   ← previous   {BACK} skip"));
 }
 
 void tutorial(bool *quit) {
@@ -288,7 +301,7 @@ static void draw_seed(const void *ctx) {
   }
   gfx_text(&font_small, 18, 108, L("Haut / Bas : changer le chiffre", "Up / Down: change the digit"), RGB565(96, 96, 96), INK_DARK_SHADOW);
   gfx_text(&font_small, 18, 120, L("Gauche / Droite : autre chiffre", "Left / Right: other digit"), RGB565(96, 96, 96), INK_DARK_SHADOW);
-  gfx_text(&font_small, 18, 132, L("OK : valider   Retour : annuler", "OK: confirm   Back: cancel"), RGB565(96, 96, 96), INK_DARK_SHADOW);
+  gfx_text(&font_small, 18, 132, L("{OK} : valider   {BACK} : annuler", "{OK}: confirm   {BACK}: cancel"), RGB565(96, 96, 96), INK_DARK_SHADOW);
 }
 
 bool seed_entry(uint32_t *seed, bool *quit) {

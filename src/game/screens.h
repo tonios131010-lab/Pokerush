@@ -14,8 +14,9 @@ int screen_title(const Run *saved, bool *quit);
 int screen_starter(bool *quit);
 /* Le Carnet : les espèces vues, obtenues, chromatiques (core/dex.h). */
 void screen_dex(bool *quit);
-/* Après une victoire, la récompense : 0 RECRUTER (une des offres), 1 ENTRAÎNER (un membre), MENU_ALT
- * (shift : le menu), -1 (Maison). cursor : la catégorie sous le curseur, gardée d'un appel à l'autre. */
+/* Après une victoire, la récompense : 0 RECRUTER (une des offres), 1 ENTRAÎNER (un membre), 2 NE RIEN
+ * PRENDRE (le bouton sous les cartes), MENU_ALT (shift : le menu), -1 (Maison). cursor : le choix sous le
+ * curseur, gardé d'un appel à l'autre. */
 int screen_reward(const Pokemon *offers, int n, const Team *team, const Trainer *next, uint16_t won, int *cursor, bool *quit);
 /* Indice de l'offre choisie, MENU_BACK (retour au choix de la récompense) ou MENU_ALT (le menu) ;
  * cursor : celle sous le curseur au départ, mise à jour. next : le prochain adversaire, annoncé dans le

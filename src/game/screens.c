@@ -9,6 +9,7 @@
 #include "gfx/menu.h"
 #include "gfx/widgets.h"
 #include "platform/input.h"
+#include "platform/pc.h"
 
 /* Petit texte : la police « small » a 3 lignes vides au-dessus des lettres. */
 static int small(int x, int y, const char *s, uint16_t c) { return gfx_text(&font_small, x, y - 3, s, c, INK_DARK_SHADOW); }
@@ -101,16 +102,19 @@ static void draw_title(const void *ctx) {
   if (t->saved) strcat(strcpy(sub, L("Partie en cours : combat ", "Game in progress: battle ")), num(n, t->saved->battle));
   else strcpy(sub, L("Roguelike des 9 générations", "A roguelike of all 9 generations"));
   if (dex.best) strcat(strcat(sub, L(" · record ", " · best ")), num(n, dex.best));
-  small((SCREEN_W - text_width(&font_small, sub)) / 2, 82, sub, RGB565(48, 48, 96));
-  ui_window(8, 90, 138, 68);
-  const char *const items[5] = {L("CONTINUER", "CONTINUE"), L("NOUVELLE PARTIE", "NEW GAME"), L("CARNET", "POKéDEX"),
-                                L("SUCCÈS", "ACHIEVEMENTS"), L("PARAMÈTRES", "SETTINGS")};
-  for (int i = 0; i < 5; i++) {
-    int y = 93 + i * 12;
+  small((SCREEN_W - text_width(&font_small, sub)) / 2, pc_has_quit() ? 80 : 82, sub, RGB565(48, 48, 96));
+  /* sur PC, une 6e ligne : QUITTER (la calculatrice a la touche Maison) */
+  int rows = pc_has_quit() ? 6 : 5, step = rows == 6 ? 11 : 12;
+  int wy = rows == 6 ? 87 : 90; /* 6 lignes : la fenêtre remonte un peu pour tenir */
+  ui_window(8, wy, 138, rows * step + (rows == 6 ? 6 : 8));
+  const char *const items[6] = {L("CONTINUER", "CONTINUE"), L("NOUVELLE PARTIE", "NEW GAME"), L("CARNET", "POKéDEX"),
+                                L("SUCCÈS", "ACHIEVEMENTS"), L("PARAMÈTRES", "SETTINGS"), L("QUITTER", "QUIT")};
+  for (int i = 0; i < rows; i++) {
+    int y = wy + 3 + i * step;
     bool off = i == 0 && !t->saved;
     if (i == t->cursor) {
-      gfx_fill(13, y + 1, 126, 12, RGB565(248, 232, 168));
-      gfx_fill(13, y + 1, 2, 12, RGB565(232, 128, 48));
+      gfx_fill(13, y + 1, 126, step, RGB565(248, 232, 168));
+      gfx_fill(13, y + 1, 2, step, RGB565(232, 128, 48));
       gfx_text(&font_normal, 15, y - 1, "▶", INK_DARK, INK_DARK_SHADOW);
     }
     gfx_text(&font_normal, 25, y - 1, items[i], off ? RGB565(168, 168, 168) : INK_DARK, INK_DARK_SHADOW);
@@ -129,11 +133,12 @@ int screen_title(const Run *saved, bool *quit) {
     int moving = dex.anim && (phase < 10 || (phase >= 16 && phase < 26)) ? who : -1;
     if (moving != t.moving) t.moving = moving, gfx_render(0, 0, SCREEN_W, 50, draw_title, &t);
     if (k & KEY_HOME) return *quit = true, -1;
-    if (k & KEY_OK) return t.cursor;
+    if (k & KEY_OK) return pc_sfx(SFX_SELECT), t.cursor;
     int c = t.cursor + ((k & KEY_DOWN) ? 1 : 0) - ((k & KEY_UP) ? 1 : 0);
-    if (c < (saved ? 0 : 1) || c > 4 || c == t.cursor) continue;
+    if (c < (saved ? 0 : 1) || c > (pc_has_quit() ? 5 : 4) || c == t.cursor) continue;
+    pc_sfx(SFX_CURSOR);
     t.cursor = c;
-    gfx_render(0, 90, 150, 70, draw_title, &t);
+    gfx_render(0, 86, 150, 74, draw_title, &t);
   }
 }
 
@@ -175,7 +180,7 @@ static void draw_dex(const void *ctx) {
   strcat(line, num(n, dex.runs));
   small(9, 129, line, RGB565(96, 96, 96));
   ui_gauge(9, 140, SCREEN_W - 22, dex_count(dex.owned), NUM_BASE_SPECIES, RGB565(232, 128, 48));
-  ui_footer(L("←→↑↓ parcourir   RETOUR quitter", "←→↑↓ browse   BACK exit"));
+  ui_footer(L("←→↑↓ parcourir   {BACK} quitter", "←→↑↓ browse   {BACK} exit"));
 }
 
 void screen_dex(bool *quit) {
@@ -217,7 +222,7 @@ static void draw_starter(const void *ctx) {
   ui_window(2, 86, SCREEN_W - 4, SCREEN_H - 88 - FOOTER_H);
   mon_header(&s->mon, 8, 91, SCREEN_W - 16, false);
   stats_grid(&s->mon, 72, 124, 44);
-  ui_footer(L("←→ génération   ↑↓ type   OK choisir", "←→ generation   ↑↓ type   OK choose"));
+  ui_footer(L("←→ génération   ↑↓ type   {OK} choisir", "←→ generation   ↑↓ type   {OK} choose"));
   char g[24], n[4];
   strcat(strcpy(g, L("GÉN. ", "GEN. ")), num(n, (unsigned)(s->cursor / 3 + 1)));
   small(SCREEN_W - 12 - text_width(&font_small, g), 92, g, RGB565(120, 120, 120));
@@ -233,14 +238,15 @@ int screen_starter(bool *quit) {
     for (;;) {
       uint16_t k = input_wait_frame();
       if (k & KEY_HOME) return *quit = true, -1;
-      if (k & KEY_BACK) return -1;
-      if (k & KEY_OK) return s.cursor;
+      if (k & KEY_BACK) return pc_sfx(SFX_BACK), -1;
+      if (k & KEY_OK) return pc_sfx(SFX_SELECT), pc_cry(starter_species[s.cursor]), s.cursor;
       int col = s.cursor / 3, row = s.cursor % 3;
       if (k & KEY_LEFT) col = (col + 8) % 9;
       if (k & KEY_RIGHT) col = (col + 1) % 9;
       if (k & KEY_UP) row = (row + 2) % 3;
       if (k & KEY_DOWN) row = (row + 1) % 3;
       if (col * 3 + row != s.cursor) {
+        pc_sfx(SFX_CURSOR);
         s.cursor = col * 3 + row;
         break;
       }
@@ -283,12 +289,16 @@ typedef struct {
   const Team *team;
   const Trainer *next;
   uint16_t won;
-  int cursor; /* 0 recruter, 1 entraîner */
+  int cursor; /* 0 recruter, 1 entraîner, 2 ne rien prendre */
+  int card;   /* la dernière carte choisie (on y revient en remontant du bouton) */
 } Reward;
 
 #define CARD_Y 31
 #define CARD_W 101
-#define CARD_H 98
+#define CARD_H 96
+#define SKIP_Y (CARD_Y + CARD_H + 2) /* le bouton « NE RIEN PRENDRE », sous les deux cartes */
+#define SKIP_W 120
+#define SKIP_H 17
 
 static void reward_card(const Reward *r, int k) {
   static const uint16_t hue[2][2] = {{RGB565(216, 104, 48), RGB565(252, 232, 208)}, {RGB565(56, 104, 184), RGB565(216, 228, 252)}};
@@ -307,10 +317,10 @@ static void reward_card(const Reward *r, int k) {
     ui_icon(sp, x + 3 + (i % 3) * 32, y + 8 + (i / 3) * 19);
   }
   const char *what;
-  if (k) what = L("Changer une attaque, la nature ou le talent d'un membre.", "Change a member's move, nature or ability.");
+  if (k) what = L("Changer une attaque, la nature ou le talent.", "Change a member's move, nature or ability.");
   else if (r->team->count < TEAM_MAX) what = L("Un des POKéMON proposés rejoint l'équipe.", "One of the offered POKéMON joins your team.");
   else what = L("Équipe complète : la recrue remplace un membre.", "Full team: the recruit replaces a member.");
-  ui_wrap_lines(&font_small, x + 6, y + 56, CARD_W - 12, 9, 4, what, on ? INK_DARK : RGB565(128, 128, 128), INK_DARK_SHADOW);
+  ui_wrap_lines(&font_small, x + 6, y + 55, CARD_W - 12, 9, 4, what, on ? INK_DARK : RGB565(128, 128, 128), INK_DARK_SHADOW);
 }
 
 static void draw_reward(const void *ctx) {
@@ -323,18 +333,35 @@ static void draw_reward(const void *ctx) {
   const char *ask = L("Choisissez UNE récompense :", "Choose ONE reward:");
   gfx_text(&font_normal, (SCREEN_W - text_width(&font_normal, ask)) / 2, 15, ask, INK_DARK, INK_DARK_SHADOW);
   for (int k = 0; k < 2; k++) reward_card(r, k);
-  ui_footer(L("←→ choisir   OK valider   SHIFT menu", "←→ select   OK confirm   SHIFT menu"));
+  /* sous les cartes : passer sans rien prendre */
+  int x = (SCREEN_W - SKIP_W) / 2;
+  bool on = r->cursor == 2;
+  ui_window(x, SKIP_Y, SKIP_W, SKIP_H);
+  gfx_fill(x + 3, SKIP_Y + 3, SKIP_W - 6, SKIP_H - 6, on ? RGB565(248, 232, 168) : RGB565(232, 232, 228));
+  if (on) ui_frame(x + 2, SKIP_Y + 2, SKIP_W - 4, SKIP_H - 4, RGB565(232, 128, 48));
+  const char *skip = L("NE RIEN PRENDRE", "TAKE NOTHING");
+  gfx_text(&font_normal, x + (SKIP_W - text_width(&font_normal, skip)) / 2, SKIP_Y + 1, skip,
+           on ? INK_DARK : RGB565(128, 128, 128), INK_DARK_SHADOW);
+  ui_footer(L("←→↑↓ choisir   {OK} valider   {ALT} menu", "←→↑↓ select   {OK} confirm   {ALT} menu"));
 }
 
 int screen_reward(const Pokemon *offers, int n, const Team *team, const Trainer *next, uint16_t won, int *cursor, bool *quit) {
-  Reward r = {offers, n, team, next, won, *cursor};
+  Reward r = {offers, n, team, next, won, *cursor, *cursor == 1};
   gfx_render(0, 0, SCREEN_W, SCREEN_H, draw_reward, &r);
   for (;;) {
     uint16_t k = input_wait_frame();
     if (k & KEY_HOME) return *quit = true, -1;
-    if (k & KEY_ALT) return *cursor = r.cursor, MENU_ALT;
-    if (k & KEY_OK) return *cursor = r.cursor;
-    if (k & (KEY_LEFT | KEY_RIGHT)) r.cursor ^= 1, gfx_render(0, CARD_Y, SCREEN_W, CARD_H, draw_reward, &r);
+    if (k & KEY_ALT) return pc_sfx(SFX_SELECT), *cursor = r.cursor, MENU_ALT;
+    if (k & KEY_OK) return pc_sfx(SFX_SELECT), *cursor = r.cursor;
+    int c = r.cursor;
+    if ((k & (KEY_LEFT | KEY_RIGHT)) && c < 2) c ^= 1;
+    if ((k & KEY_DOWN) && c < 2) c = 2;
+    if ((k & KEY_UP) && c == 2) c = r.card;
+    if (c == r.cursor) continue;
+    pc_sfx(SFX_CURSOR);
+    r.cursor = c;
+    if (c < 2) r.card = c;
+    gfx_render(0, CARD_Y, SCREEN_W, SKIP_Y + SKIP_H - CARD_Y, draw_reward, &r);
   }
 }
 
@@ -385,7 +412,7 @@ static void draw_draft(const void *ctx) {
     small(rx, y + 67, res, INK_GREEN);
   }
   for (int k = 0; k < MOVES_MAX; k++) move_line(x + (k & 1) * 100, y + 76 + (k >> 1) * 9, pokemon_move(p, (uint8_t)k));
-  ui_footer(L("OK recruter   RETOUR revenir   SHIFT menu", "OK recruit   BACK return   SHIFT menu"));
+  ui_footer(L("{OK} recruter   {BACK} revenir   {ALT} menu", "{OK} recruit   {BACK} return   {ALT} menu"));
 }
 
 int screen_draft(const Pokemon *offers, int n, const Team *team, const Trainer *next, int *cursor, bool *quit) {
@@ -399,12 +426,12 @@ int screen_draft(const Pokemon *offers, int n, const Team *team, const Trainer *
     bool f2 = dex.anim && pokemon_front2[d.offers[d.cursor].species].w && ((phase >= 60 && phase < 70) || (phase >= 76 && phase < 86));
     if (f2 != header_frame2) header_frame2 = f2, gfx_render(0, 46, 72, 62, draw_draft, &d);
     if (k & KEY_HOME) return *quit = true, -1;
-    if (k & KEY_BACK) return *cursor = d.cursor, MENU_BACK;
-    if (k & KEY_ALT) return *cursor = d.cursor, MENU_ALT;
-    if (k & KEY_OK) return *cursor = d.cursor;
+    if (k & KEY_BACK) return pc_sfx(SFX_BACK), *cursor = d.cursor, MENU_BACK;
+    if (k & KEY_ALT) return pc_sfx(SFX_SELECT), *cursor = d.cursor, MENU_ALT;
+    if (k & KEY_OK) return pc_sfx(SFX_SELECT), pc_cry(offers[d.cursor].species), *cursor = d.cursor;
     int c = d.cursor + ((k & KEY_RIGHT) ? 1 : 0) - ((k & KEY_LEFT) ? 1 : 0);
     c = (c + n) % n;
-    if (c != d.cursor) d.cursor = c, t = 0, header_frame2 = false, gfx_render(0, 0, SCREEN_W, SCREEN_H, draw_draft, &d);
+    if (c != d.cursor) pc_sfx(SFX_CURSOR), d.cursor = c, t = 0, header_frame2 = false, gfx_render(0, 0, SCREEN_W, SCREEN_H, draw_draft, &d);
   }
 }
 
@@ -470,7 +497,7 @@ static void draw_preview(const void *ctx) {
       gfx_text(&font_small, x + 91, y + 2, d, INK_LIGHT, RGB565(64, 48, 16));
     }
   }
-  ui_footer(L("OK choisir / retirer   RETOUR annuler", "OK pick / remove   BACK undo"));
+  ui_footer(L("{OK} choisir / retirer   {BACK} annuler", "{OK} pick / remove   {BACK} undo"));
 }
 
 int screen_preview(const Team *mine, const Trainer *foe, uint8_t order[4], bool *quit) {
@@ -495,15 +522,18 @@ int screen_preview(const Team *mine, const Trainer *foe, uint8_t order[4], bool 
       if (c >= mine->count) c = mine->count - 1;
       if (c < 0) c = 0;
       if (c != p.cursor) {
+        pc_sfx(SFX_CURSOR);
         p.cursor = c;
         gfx_render(0, 74, SCREEN_W, SCREEN_H - 74, draw_preview, &p);
         continue;
       }
       if ((k & KEY_BACK) && p.n) {
+        pc_sfx(SFX_BACK);
         p.n--;
         break;
       }
       if (k & KEY_OK) {
+        pc_sfx(SFX_SELECT);
         int at = picked(&p, p.cursor);
         if (at) { /* retiré : les suivants remontent */
           for (int j = at; j < p.n; j++) p.order[j - 1] = p.order[j];

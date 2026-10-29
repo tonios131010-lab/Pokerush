@@ -28,9 +28,16 @@ SETTINGS → « Langue / Language »).
 
 ## Install
 
+**On a calculator**
+
 1. Download `pokerush.nwa` from the [Releases](../../releases) page.
 2. Plug your calculator in over USB and install the file from https://my.numworks.com/apps.
 3. Start **PokeRush** from the home screen.
+
+**On PC (Windows)**
+
+1. Download `PokeRush-PC.zip` from the [Releases](../../releases) page and extract it.
+2. Run `PokeRush.exe` — nothing to install. Saves and settings live in `%APPDATA%\PokeRush`.
 
 Your run is saved automatically in a script named `pokemon.py`, and your POKéDEX, achievements and
 settings in `carnet.py` (both visible in the Python app — don't edit them). Pressing Home quits; the
@@ -43,7 +50,7 @@ run resumes at the last checkpoint.
 | **N0120** | Developed and tested on it. |
 | **N0110** | Should work too: same ARM Cortex-M architecture, same EADK app format and same storage system. Not tested yet — feedback welcome. |
 | N0100 | Not supported (not enough flash memory for an app of this size). |
-| PC (Windows) | A PC build with a window and keyboard controls is included for development (see [Building from source](#building-from-source)). |
+| PC (Windows) | Full PC version with music, cries, gamepad and full screen (see [PC version](#pc-version-windows)). |
 
 The app needs about **1.9 MB** of flash and **117 KB** of RAM.
 
@@ -58,8 +65,7 @@ The app needs about **1.9 MB** of flash and **117 KB** of RAM.
 | Shift | Mega Evolution (in the move menu); open the menu during the reward choice |
 | Home | Quit (the run resumes at the last checkpoint) |
 
-On PC: arrows, Space = OK, Enter = EXE, Backspace = Back, Shift or M = shift, Esc = Home, F12 =
-screenshot.
+PC controls are listed in [PC version](#pc-version-windows).
 
 ## How a run works
 
@@ -73,13 +79,15 @@ screenshot.
 4. **After each victory**: loot, then **one reward**, your choice:
    - **RECRUIT** one of 5 offered Pokémon — it joins the team, or replaces a member if the team is
      full;
-   - **TRAIN** a member — change a move, its nature or its ability.
+   - **TRAIN** a member — change a move, its nature or its ability;
+   - or **TAKE NOTHING** (the button under the two cards).
 
    You can go back until you confirm; a final confirmation reminds you the choice is final. A badge
    shows the next opponent (favorite type, Boss or raid) so you can prepare.
 5. **Preparation menu**: give items, reorder the team, check the POKéDEX, achievements, settings —
    then press **EXE** for the next battle.
-6. **Checkpoints** every 10 battles. **Bosses** every 10 battles (Hoenn Gym Leaders, rival MAY,
+6. **Checkpoints**: set in SETTINGS — a loss sends you back to the last 10-battle checkpoint (default),
+   to the lost battle (checkpoint every battle), or ends the run (never). **Bosses** every 10 battles (Hoenn Gym Leaders, rival MAY,
    Elite Four, Champion WALLACE at battle 100, then the Kanto leaders, Elite Four and BLUE).
 
 ## Features
@@ -105,7 +113,7 @@ screenshot.
   **17 achievements** unlocking menu themes, characters and a light dialog box.
 - **End of run**: ending cutscene after the Champion, Hall of Fame and run summary (also at the end
   of a Nuzlocke).
-- **Settings**: language, single / double battles, animations, ×2 speed, Shift / Set battle style,
+- **Settings**: language, single / double battles, checkpoints, animations, ×2 speed, Shift / Set battle style,
   theme, character, tutorial.
 - **A secret Pokémon**, designed for this game, hides very rarely in the draft… Find it to unlock an
   achievement and a new theme.
@@ -151,8 +159,9 @@ timing, keys).
 
 ### PC version and tests
 
-`make sim` builds the game for PC, with `sim/` replacing the EADK. On Windows it opens a window;
-with `SIM_SCRIPT` the keyboard follows a script and PPM screenshots are written:
+`python tools/build_pc.py` builds the Windows version (see [PC version](#pc-version-windows)).
+`make sim` builds the same game for tests: with `SIM_SCRIPT` there is no window, the keyboard follows
+a script and PPM screenshots are written:
 
 ```
 SIM_SCRIPT="_*3 shot:title down ok _*14 shot:starter" SIM_OUT=. build/sim/pokerush
@@ -161,6 +170,25 @@ SIM_SCRIPT="_*3 shot:title down ok _*14 shot:starter" SIM_OUT=. build/sim/pokeru
 `make test` runs the PC tests: data (type chart, Megas, Gen 9 values, both languages), battle engine
 (scenarios, 5,000 random single battles, 3,000 random double battles, message lengths in both
 languages), trainers and AI, save files.
+
+## PC version (Windows)
+
+Same game, with `sim/` standing in for the EADK (built with `POKERUSH_PC`):
+
+- **Display**: resizable window (×3 to ×8), **full screen** (F11, Alt+Enter or SETTINGS), **sharp**
+  integer scaling or **stretched** to fill the screen, optional **scanline** or **LCD grid** filters.
+- **Keyboard**: arrows or WASD/ZQSD (by key position, so AZERTY works too), Enter = confirm, Esc or
+  Backspace = back, Shift = Mega / draft menu, Space = next battle.
+- **Gamepad** (Xbox / XInput): D-pad or stick, A = confirm, B = back, X / Y / triggers = Mega / menu,
+  START = next battle, with **rumble** when your Pokémon are hit, faint or Mega Evolve.
+  (PlayStation controllers are not supported yet.)
+- **On-screen button names** follow the last device used (« ENTER », « A »…).
+- **Sound**: Emerald's music (the MIDI files of the expansion, looped, played by Windows' General MIDI
+  synthesizer), Pokémon cries, and generated sound effects. Volumes are in SETTINGS.
+- **Extra settings**: full screen, picture mode, window size, filter, button prompts, rumble, volumes.
+
+`tools/build_pc.py` needs `python -m pip install ziglang pillow` and the expansion folder; it produces
+`build/pc/PokeRush.exe`, its `data/` folder (15 songs, 753 cries) and `build/PokeRush-PC.zip`.
 
 ## Project layout
 
@@ -178,7 +206,8 @@ PokeRush/
 │   ├── gen_data.py         data/ + expansion -> build/gen/data.c/.h, data_report.md
 │   ├── convert_assets.py   graphics -> build/gen/assets.c/.h, preview.png
 │   ├── claude_code_art.py  draws the original Pokémon
-│   └── build.py            build without make (Windows)
+│   ├── build.py            build without make (Windows)
+│   └── build_pc.py         builds the PC version: PokeRush.exe, music, cries, zip
 ├── src/
 │   ├── main.c
 │   ├── platform/           the only code touching the EADK (files, keyboard, app)
@@ -186,7 +215,7 @@ PokeRush/
 │   ├── game/               pokemon.h, battle (engine), ai, trainer, fight (battle on screen),
 │   │                       screens (title, starter, draft, summaries), meta, play (the run)
 │   └── core/               rng, base64, save, POKéDEX
-├── sim/                    PC EADK (Windows window, key scripts, screenshots)
+├── sim/                    PC EADK: the PC version (window, gamepad, sound) and test scripts
 └── tests/                  PC tests, diagnostic app, screen demo
 ```
 
@@ -209,6 +238,18 @@ PokeRush/
   15 KB transfer buffer, 10 KB decoded sprites).
 
 Code comments are in French.
+
+## Playtesting & bug reports
+
+PokeRush is in **playtest**: it is a big game made by a very small team, and more eyes find more bugs.
+If you try it, please tell us what you find:
+
+- **Found a bug or something unfair?** Open an [issue](../../issues/new/choose) (bug report template).
+- **Just want to give your opinion** (difficulty, balance, fun, ideas)? Use the feedback template.
+- Useful details: which model (N0120, N0110, PC), language, battle number, your team, and the
+  **seed** shown in the end-of-run summary (it replays the exact same run).
+- Especially welcome: runs that go **past battle 30** (bosses, raids, Mega, Kanto), **N0110** testers,
+  and **gamepad / sound** feedback on PC.
 
 ## Contributors
 
