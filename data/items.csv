@@ -1,0 +1,104 @@
+id;nom;effet;type;rarete;desc;nom_en;desc_en
+leftovers;Restes;leftovers;;2;Récupère 1/16 des PV par tour;;Recovers 1/16 HP every turn
+choice_band;Bandeau Choix;choice_atk;;3;ATTAQUE ×1,5, une seule attaque;;ATTACK ×1.5, locked into one move
+choice_specs;Lunettes Choix;choice_spa;;3;ATQ. SPÉ. ×1,5, une seule attaque;;SP. ATK ×1.5, locked into one move
+choice_scarf;Mouchoir Choix;choice_spe;;3;VITESSE ×1,5, une seule attaque;;SPEED ×1.5, locked into one move
+life_orb;Orbe Vie;life_orb;;3;Dégâts +30 %, perd 1/10 PV;;Damage +30 %, loses 1/10 HP
+focus_sash;Ceinture Force;focus_sash;;2;PV max : survit à un coup fatal;;Full HP: survives a fatal hit
+assault_vest;Veste de Combat;assault_vest;;3;DÉF. SPÉ. ×1,5, pas de statut;;SP. DEF ×1.5, no status moves
+rocky_helmet;Casque Brut;rocky_helmet;;2;Contact : l'ennemi perd 1/6 PV;;Contact: attacker loses 1/6 HP
+black_sludge;Boue Noire;black_sludge;;1;Soigne le Poison, blesse les autres;;Heals Poison types, hurts others
+weakness_policy;Vulné-Assurance;weakness_policy;;2;Super efficace reçu : ATQ, ATQ.S +2;;Hit super effectively: ATK, SPA +2
+heavy_boots;Grosses Bottes;heavy_boots;;1;Ignore les pièges d'entrée;Heavy-Duty Boots;Ignores entry hazards
+air_balloon;Ballon;air_balloon;;1;Immunisé au Sol jusqu'au 1er coup;;Immune to Ground until hit
+focus_band;Bandeau;focus_band;;1;10 % : survit à un coup fatal;;10 %: survives a fatal hit
+shell_bell;Grelot Coque;shell_bell;;1;Récupère 1/8 des dégâts faits;;Recovers 1/8 of damage dealt
+quick_claw;Vive Griffe;quick_claw;;1;20 % : agit en premier;;20 %: moves first
+kings_rock;Roche Royale;kings_rock;;1;10 % : apeure la cible;;10 %: makes the target flinch
+scope_lens;Lentilscope;scope_lens;;1;Coups critiques plus fréquents;;More frequent critical hits
+bright_powder;Poudre Claire;bright_powder;;1;Précision ennemie -10 %;;Foe's accuracy -10 %
+lum_berry;Baie Prine;lum_berry;;2;Guérit un statut, une fois;;Cures a status, once
+sitrus_berry;Baie Sitrus;sitrus_berry;;1;Sous 1/2 PV : rend 1/4 des PV;;Below 1/2 HP: restores 1/4 HP
+white_herb;Herbe Blanche;white_herb;;1;Annule une baisse de stats;;Cancels a stat drop
+expert_belt;Ceinture Pro;expert_belt;;2;Super efficace : +20 %;;Super effective: +20 %
+muscle_band;Bandeau Muscle;muscle_band;;1;Attaques physiques +10 %;;Physical moves +10 %
+wise_glasses;Lunettes Sages;wise_glasses;;1;Attaques spéciales +10 %;;Special moves +10 %
+silk_scarf;Mouchoir Soie;type_boost;normal;0;;;
+black_belt;Ceinture Noire;type_boost;fighting;0;;;
+sharp_beak;Bec Pointu;type_boost;flying;0;;;
+poison_barb;Pic Venin;type_boost;poison;0;;;
+soft_sand;Sable Doux;type_boost;ground;0;;;
+hard_stone;Pierre Dure;type_boost;rock;0;;;
+silver_powder;Poudre Argent;type_boost;bug;0;;;
+spell_tag;Rune Sort;type_boost;ghost;0;;;
+metal_coat;Peau Métal;type_boost;steel;0;;;
+charcoal;Charbon;type_boost;fire;0;;;
+mystic_water;Eau Mystique;type_boost;water;0;;;
+miracle_seed;Grain Miracle;type_boost;grass;0;;;
+magnet;Aimant;type_boost;electric;0;;;
+twisted_spoon;Cuiller Tordue;type_boost;psychic;0;;;
+never_melt_ice;Glace Éternelle;type_boost;ice;0;;;
+dragon_fang;Croc Dragon;type_boost;dragon;0;;;
+black_glasses;Lunettes Noires;type_boost;dark;0;;;
+fairy_feather;Plume Fée;type_boost;fairy;0;;;
+clear_amulet;Amulette Pure;clear_amulet;;2;L'ennemi ne baisse pas ses stats;;Foes can't lower its stats
+covert_cloak;Cape Furtive;covert_cloak;;2;Ignore les effets secondaires reçus;;Blocks added effects
+loaded_dice;Dés Pipés;loaded_dice;;2;Attaques multiples : 4 coups ou plus;;Multi-hit moves: 4 hits or more
+light_clay;Lumargile;light_clay;;1;PROTECTION, MUR LUMIÈRE : 8 tours;;REFLECT, LIGHT SCREEN: 8 turns
+big_root;Grosse Racine;big_root;;1;Soins par drainage +30 %;;Draining heals +30 %
+wide_lens;Loupe;wide_lens;;1;Précision +10 %;;Accuracy +10 %
+toxic_orb;Orbe Toxique;toxic_orb;;1;Empoisonne gravement le porteur;;Badly poisons the holder
+flame_orb;Orbe Flamme;flame_orb;;1;Brûle le porteur;;Burns the holder
+punching_glove;Gant de Boxe;punching_glove;;1;Poings +10 %, sans contact;;Punches +10 %, no contact
+resonance_prism;Écho-Prisme;resonance_prism;;3;Compte double pour la Résonance;Echo Prism;Counts double for Resonance
+terrain_extender;Champ Etendu;terrain_extender;;1;Les champs durent 8 tours;;Terrains last 8 turns
+razor_claw;Griffe Rasoir;scope_lens;;1;Coups critiques plus fréquents;;More frequent critical hits
+razor_fang;Croc Rasoir;kings_rock;;1;10 % : apeure la cible;;10 %: makes the target flinch
+@mega_stones;;;;;;;
+damp_rock;Roche Humide;weather_rock;water;1;Sa PLUIE dure 8 tours;;Its RAIN lasts 8 turns
+heat_rock;Roche Chaude;weather_rock;fire;1;Son ZÉNITH dure 8 tours;;Its SUNNY DAY lasts 8 turns
+smooth_rock;Roche Lisse;weather_rock;rock;1;Sa TEMPÊTE DE SABLE dure 8 tours;;Its SANDSTORM lasts 8 turns
+icy_rock;Roche Glace;weather_rock;ice;1;Sa GRÊLE dure 8 tours;;Its HAIL lasts 8 turns
+electric_seed;Graine Électrik;terrain_seed;electric;1;Champ Électrifié : DÉFENSE +1;;Electric Terrain: DEFENSE +1
+grassy_seed;Graine Herbe;terrain_seed;grass;1;Champ Herbu : DÉFENSE +1;;Grassy Terrain: DEFENSE +1
+misty_seed;Graine Brume;terrain_seed;fairy;1;Champ Brumeux : DÉF. SPÉ. +1;;Misty Terrain: SP. DEF +1
+psychic_seed;Graine Psy;terrain_seed;psychic;1;Champ Psychique : DÉF. SPÉ. +1;;Psychic Terrain: SP. DEF +1
+throat_spray;Spray Gorge;throat_spray;;1;Après un son : ATQ. SPÉ. +1;;After a sound move: SP. ATK +1
+eject_button;Bouton Fuite;eject_button;;1;Touché : le porteur est rappelé;;Hit: the holder is switched out
+red_card;Carton Rouge;red_card;;1;Touché : l'attaquant est chassé;;Hit: the attacker is forced out
+safety_goggles;Lunettes Filtre;safety_goggles;;1;Immunisé aux poudres et au climat;;Immune to powders and weather
+utility_umbrella;Parapluie Fort;utility_umbrella;;1;Ignore le soleil et la pluie;;Ignores sun and rain
+protective_pads;Pare-Effet;protective_pads;;1;Ses attaques ne font pas contact;;Its moves make no contact
+zoom_lens;Lentille Zoom;zoom_lens;;1;Agit en second : précision +20 %;;Moving second: accuracy +20 %
+shed_shell;Carapace Mue;shed_shell;;1;Peut toujours être rappelé;;Can always switch out
+metronome;Métronome;metronome;;2;Même attaque répétée : +20 %;;Same move repeated: +20 %
+mental_herb;Herbe Mental;mental_herb;;1;Guérit la PROVOC, une fois;;Cures TAUNT, once
+power_herb;Herbe Pouvoir;power_herb;;2;Attaque en 2 tours : immédiate;;Two-turn move: immediate
+blunder_policy;Assurance Échec;blunder_policy;;1;Attaque ratée : VITESSE +2;;Move missed: SPEED +2
+jaboca_berry;Baie Jacoba;jaboca_berry;0;1;Coup physique reçu : l'ennemi -1/8;;Physical hit taken: foe -1/8
+rowap_berry;Baie Pommo;jaboca_berry;1;1;Coup spécial reçu : l'ennemi -1/8;;Special hit taken: foe -1/8
+kee_berry;Baie Éka;kee_berry;0;1;Coup physique reçu : DÉFENSE +1;;Physical hit taken: DEFENSE +1
+maranga_berry;Baie Rangma;kee_berry;1;1;Coup spécial reçu : DÉF. SPÉ. +1;;Special hit taken: SP. DEF +1
+liechi_berry;Baie Lichii;pinch_berry;1;1;Sous 1/4 PV : ATTAQUE +1;;Below 1/4 HP: ATTACK +1
+ganlon_berry;Baie Lingan;pinch_berry;2;1;Sous 1/4 PV : DÉFENSE +1;;Below 1/4 HP: DEFENSE +1
+salac_berry;Baie Sailak;pinch_berry;3;1;Sous 1/4 PV : VITESSE +1;;Below 1/4 HP: SPEED +1
+petaya_berry;Baie Pitaye;pinch_berry;4;1;Sous 1/4 PV : ATQ. SPÉ. +1;;Below 1/4 HP: SP. ATK +1
+apicot_berry;Baie Abriko;pinch_berry;5;1;Sous 1/4 PV : DÉF. SPÉ. +1;;Below 1/4 HP: SP. DEF +1
+occa_berry;Baie Chocco;resist_berry;fire;0;;;
+passho_berry;Baie Pocpoc;resist_berry;water;0;;;
+wacan_berry;Baie Parma;resist_berry;electric;0;;;
+rindo_berry;Baie Ratam;resist_berry;grass;0;;;
+yache_berry;Baie Nanone;resist_berry;ice;0;;;
+chople_berry;Baie Pomroz;resist_berry;fighting;0;;;
+kebia_berry;Baie Kébia;resist_berry;poison;0;;;
+shuca_berry;Baie Jouca;resist_berry;ground;0;;;
+coba_berry;Baie Cobaba;resist_berry;flying;0;;;
+payapa_berry;Baie Yapap;resist_berry;psychic;0;;;
+tanga_berry;Baie Panga;resist_berry;bug;0;;;
+charti_berry;Baie Charti;resist_berry;rock;0;;;
+kasib_berry;Baie Sédra;resist_berry;ghost;0;;;
+haban_berry;Baie Fraigo;resist_berry;dragon;0;;;
+colbur_berry;Baie Lampou;resist_berry;dark;0;;;
+babiri_berry;Baie Babiri;resist_berry;steel;0;;;
+chilan_berry;Baie Zalis;resist_berry;normal;0;;;
+roseli_berry;Baie Selro;resist_berry;fairy;0;;;

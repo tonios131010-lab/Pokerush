@@ -1,0 +1,151 @@
+dex;attaques
+3;giga_drain solar_beam frenzy_plant sludge_bomb sleep_powder leech_seed swords_dance earthquake synthesis body_slam magical_leaf growth sunny_day
+6;flamethrower fire_blast overheat blast_burn heat_wave dragon_claw earthquake aerial_ace swords_dance belly_drum rock_slide sunny_day solar_beam
+9;surf hydro_pump hydro_cannon ice_beam blizzard earthquake rapid_spin brick_break iron_defense rain_dance body_slam ice_punch
+18;aerial_ace double_edge steel_wing quick_attack agility whirlwind body_slam hyper_beam
+26;thunderbolt thunder thunder_wave shock_wave brick_break iron_tail quick_attack agility body_slam double_edge light_screen thunder_punch
+31;earthquake sludge_bomb ice_beam thunderbolt flamethrower fire_blast superpower body_slam shadow_ball iron_tail rock_slide
+34;earthquake sludge_bomb megahorn ice_beam thunderbolt flamethrower fire_blast iron_tail rock_slide shadow_ball double_kick brick_break
+36;body_slam ice_beam thunderbolt flamethrower psychic shadow_ball calm_mind soft_boiled thunder_wave belly_drum moonlight double_edge
+38;flamethrower fire_blast overheat heat_wave will_o_wisp confuse_ray hypnosis sunny_day solar_beam iron_tail quick_attack
+45;giga_drain solar_beam sludge_bomb sleep_powder stun_spore petal_dance aromatherapy moonlight sunny_day
+51;earthquake rock_slide rock_tomb aerial_ace slash sandstorm double_edge
+55;surf hydro_pump ice_beam blizzard psychic calm_mind cross_chop hypnosis rain_dance brick_break
+57;cross_chop brick_break rock_slide earthquake thunder_punch bulk_up screech double_edge aerial_ace
+59;flamethrower fire_blast overheat extreme_speed crunch iron_tail roar body_slam double_edge sunny_day
+62;surf hydro_pump ice_beam brick_break dynamic_punch earthquake hypnosis belly_drum bulk_up rain_dance psychic
+65;psychic calm_mind shadow_ball fire_punch thunder_punch ice_punch recover reflect light_screen thunder_wave
+68;cross_chop brick_break dynamic_punch rock_slide earthquake bulk_up fire_punch thunder_punch ice_punch seismic_toss
+71;giga_drain solar_beam sludge_bomb sleep_powder stun_spore swords_dance sunny_day magical_leaf double_edge
+73;surf hydro_pump ice_beam sludge_bomb rapid_spin haze barrier swords_dance giga_drain
+76;earthquake rock_slide rock_blast rock_tomb explosion double_edge brick_break fire_blast sandstorm
+78;flamethrower fire_blast overheat agility quick_attack body_slam double_edge sunny_day solar_beam
+80;surf psychic ice_beam calm_mind amnesia thunder_wave flamethrower fire_blast earthquake iron_tail
+82;thunderbolt thunder zap_cannon thunder_wave shock_wave screech tri_attack light_screen
+87;surf ice_beam blizzard icy_wind body_slam double_edge hail rain_dance
+89;sludge_bomb fire_blast flamethrower thunderbolt fire_punch thunder_punch ice_punch explosion curse acid_armor brick_break shadow_ball haze
+91;surf ice_beam blizzard icicle_spear spikes explosion rapid_spin rain_dance hail
+94;shadow_ball thunderbolt sludge_bomb psychic ice_punch fire_punch thunder_punch hypnosis giga_drain explosion night_shade confuse_ray
+99;crabhammer surf swords_dance brick_break ice_beam rain_dance double_edge
+103;psychic giga_drain solar_beam sleep_powder stun_spore leech_seed explosion sunny_day
+105;bonemerang earthquake rock_slide rock_tomb swords_dance double_edge fire_blast brick_break
+106;hi_jump_kick brick_break double_kick rock_slide earthquake bulk_up fake_out
+107;sky_uppercut mach_punch fire_punch thunder_punch ice_punch brick_break bulk_up rock_slide earthquake
+110;sludge_bomb flamethrower fire_blast thunderbolt shadow_ball explosion haze
+112;earthquake rock_slide rock_tomb megahorn double_edge body_slam crunch brick_break ice_beam thunderbolt fire_blast sandstorm
+115;double_edge body_slam fake_out earthquake rock_slide brick_break shadow_ball ice_beam thunderbolt fire_blast
+119;surf waterfall megahorn ice_beam agility rain_dance double_edge
+121;surf hydro_pump ice_beam thunderbolt psychic recover rapid_spin thunder_wave light_screen reflect
+124;ice_beam blizzard psychic lovely_kiss calm_mind ice_punch shadow_ball
+125;thunderbolt thunder thunder_punch fire_punch ice_punch brick_break cross_chop light_screen thunder_wave psychic
+126;flamethrower fire_blast fire_punch thunder_punch brick_break cross_chop psychic confuse_ray overheat sunny_day
+127;swords_dance megahorn brick_break earthquake rock_slide double_edge body_slam
+128;double_edge body_slam earthquake rock_slide iron_tail fire_blast thunderbolt ice_beam hyper_beam
+130;dragon_dance waterfall hydro_pump surf earthquake double_edge hyper_beam ice_beam thunderbolt fire_blast taunt
+131;surf hydro_pump ice_beam blizzard thunderbolt body_slam confuse_ray sing psychic rain_dance
+134;surf hydro_pump ice_beam acid_armor haze shadow_ball rain_dance double_edge baton_pass
+135;thunderbolt thunder thunder_wave shadow_ball pin_missile agility double_kick baton_pass light_screen
+136;fire_blast flamethrower overheat shadow_ball double_edge body_slam quick_attack baton_pass iron_tail
+139;surf hydro_pump ice_beam blizzard ancient_power spikes rock_slide rain_dance
+141;swords_dance rock_slide brick_break aerial_ace surf waterfall ancient_power rapid_spin slash ice_beam
+142;rock_slide earthquake aerial_ace double_edge fire_blast steel_wing ancient_power iron_tail hyper_beam
+143;body_slam double_edge belly_drum curse earthquake shadow_ball fire_blast ice_punch self_destruct
+144;ice_beam blizzard icy_wind sky_attack reflect agility hail double_edge
+145;thunderbolt thunder drill_peck thunder_wave agility light_screen rain_dance sky_attack
+146;flamethrower fire_blast overheat heat_wave sky_attack agility sunny_day solar_beam
+149;dragon_dance outrage dragon_claw earthquake aerial_ace fire_blast thunderbolt ice_beam surf double_edge hyper_beam
+150;psychic calm_mind shadow_ball ice_beam thunderbolt flamethrower fire_blast recover brick_break
+151;psychic calm_mind shadow_ball ice_beam thunderbolt flamethrower earthquake swords_dance soft_boiled baton_pass explosion
+154;giga_drain solar_beam magical_leaf synthesis swords_dance body_slam earthquake reflect light_screen frenzy_plant leech_seed
+157;flamethrower fire_blast overheat eruption blast_burn thunder_punch fire_punch brick_break earthquake quick_attack sunny_day
+160;surf hydro_pump hydro_cannon ice_beam crunch earthquake swords_dance rock_slide brick_break ice_punch waterfall
+169;aerial_ace sludge_bomb shadow_ball confuse_ray haze taunt giga_drain steel_wing double_edge
+171;surf hydro_pump ice_beam thunderbolt thunder thunder_wave confuse_ray rain_dance
+178;psychic calm_mind shadow_ball aerial_ace confuse_ray reflect light_screen giga_drain haze
+181;thunderbolt thunder thunder_wave thunder_punch fire_punch light_screen iron_tail body_slam
+184;surf waterfall hydro_pump ice_beam ice_punch brick_break belly_drum double_edge body_slam rain_dance
+186;surf hydro_pump ice_beam blizzard hypnosis belly_drum brick_break earthquake rain_dance
+195;earthquake surf ice_beam haze amnesia curse body_slam rain_dance
+196;psychic calm_mind shadow_ball baton_pass morning_sun reflect light_screen double_edge
+197;faint_attack confuse_ray moonlight baton_pass shadow_ball taunt screech double_edge
+199;surf psychic ice_beam calm_mind amnesia flamethrower fire_blast thunder_wave earthquake
+200;shadow_ball thunderbolt confuse_ray psychic calm_mind taunt thunder_wave
+205;spikes rapid_spin explosion earthquake rock_slide double_edge pin_missile
+207;earthquake aerial_ace rock_slide swords_dance iron_tail faint_attack
+208;earthquake iron_tail rock_slide explosion curse roar crunch dragon_breath sandstorm
+210;double_edge body_slam earthquake rock_slide fire_punch thunder_punch ice_punch crunch shadow_ball brick_break heal_bell
+212;swords_dance agility baton_pass metal_claw steel_wing aerial_ace brick_break silver_wind quick_attack
+214;megahorn brick_break earthquake rock_slide swords_dance double_edge body_slam
+215;faint_attack slash quick_attack ice_beam blizzard brick_break aerial_ace taunt swords_dance icy_wind
+217;double_edge body_slam earthquake rock_slide brick_break fire_punch thunder_punch slash curse swords_dance shadow_ball
+219;flamethrower fire_blast overheat rock_slide ancient_power earthquake amnesia sunny_day
+221;earthquake ice_beam blizzard ancient_power rock_slide double_edge body_slam amnesia hail
+226;surf hydro_pump ice_beam blizzard confuse_ray aerial_ace rain_dance haze
+227;drill_peck steel_wing aerial_ace spikes whirlwind sky_attack curse agility
+229;flamethrower fire_blast overheat crunch faint_attack shadow_ball sludge_bomb sunny_day solar_beam roar
+230;surf hydro_pump ice_beam dragon_dance dragon_claw dragon_breath rain_dance double_edge agility waterfall
+232;earthquake rock_slide rapid_spin double_edge body_slam iron_tail roar
+233;tri_attack thunderbolt ice_beam psychic shadow_ball recover thunder_wave zap_cannon agility
+237;brick_break hi_jump_kick fake_out rapid_spin bulk_up earthquake rock_slide mach_punch
+241;body_slam double_edge milk_drink heal_bell earthquake shadow_ball ice_beam thunderbolt curse
+242;soft_boiled heal_bell ice_beam thunderbolt flamethrower seismic_toss calm_mind thunder_wave shadow_ball
+243;thunderbolt thunder thunder_wave crunch shadow_ball calm_mind reflect roar
+244;flamethrower fire_blast overheat solar_beam sunny_day calm_mind iron_tail double_edge roar
+245;surf hydro_pump ice_beam blizzard calm_mind rain_dance reflect roar
+248;rock_slide earthquake crunch dragon_dance fire_blast flamethrower thunderbolt ice_beam brick_break
+249;aeroblast psychic calm_mind recover ice_beam thunderbolt earthquake reflect light_screen
+250;sacred_fire fire_blast flamethrower overheat earthquake solar_beam recover calm_mind thunderbolt
+251;psychic giga_drain leech_seed recover calm_mind baton_pass swords_dance ancient_power heal_bell
+254;leaf_blade giga_drain swords_dance earthquake aerial_ace brick_break dragon_claw frenzy_plant leech_seed agility thunder_punch crunch
+257;blaze_kick sky_uppercut flamethrower fire_blast overheat brick_break bulk_up earthquake rock_slide thunder_punch swords_dance blast_burn
+260;earthquake surf hydro_pump hydro_cannon ice_beam rock_slide brick_break curse body_slam double_edge
+262;crunch double_edge body_slam iron_tail shadow_ball taunt roar
+272;surf hydro_pump ice_beam giga_drain solar_beam leech_seed rain_dance brick_break ice_punch
+275;giga_drain solar_beam faint_attack explosion swords_dance shadow_ball sunny_day brick_break aerial_ace
+277;aerial_ace double_edge quick_attack steel_wing agility body_slam
+279;surf hydro_pump ice_beam blizzard aerial_ace rain_dance
+282;psychic calm_mind thunderbolt shadow_ball fire_punch ice_punch hypnosis light_screen reflect
+286;spore mach_punch sky_uppercut brick_break leech_seed giga_drain swords_dance
+289;double_edge body_slam earthquake rock_slide shadow_ball brick_break ice_beam flamethrower thunderbolt slack_off
+295;hyper_voice flamethrower ice_beam thunder earthquake rock_slide shadow_ball brick_break overheat
+297;cross_chop brick_break fake_out bulk_up earthquake rock_slide knock_off belly_drum
+302;shadow_ball faint_attack night_shade recover confuse_ray knock_off calm_mind
+303;iron_tail crunch swords_dance iron_defense brick_break rock_slide fire_blast baton_pass
+306;iron_tail rock_slide earthquake double_edge iron_defense brick_break fire_blast thunderbolt ice_beam dragon_claw roar
+308;brick_break hi_jump_kick bulk_up fire_punch thunder_punch ice_punch shadow_ball psychic
+310;thunderbolt thunder thunder_wave shock_wave iron_tail overheat quick_attack roar
+317;sludge_bomb explosion shadow_ball ice_beam earthquake body_slam
+319;crunch surf hydro_pump waterfall ice_beam earthquake double_edge agility swords_dance
+323;earthquake fire_blast flamethrower overheat eruption rock_slide solar_beam sunny_day
+324;flamethrower fire_blast overheat explosion earthquake rock_slide iron_defense sunny_day
+326;psychic calm_mind shadow_ball thunder_wave ice_punch fire_punch thunder_punch
+330;earthquake dragon_claw rock_slide fire_blast flamethrower aerial_ace iron_tail dragon_breath sandstorm
+332;giga_drain solar_beam faint_attack spikes leech_seed swords_dance brick_break
+334;dragon_dance dragon_claw earthquake aerial_ace flamethrower ice_beam heal_bell
+335;swords_dance crush_claw slash quick_attack brick_break shadow_ball thunderbolt ice_beam double_edge rock_slide
+336;sludge_bomb crunch flamethrower giga_drain earthquake haze iron_tail
+340;earthquake surf hydro_pump ice_beam rock_slide dragon_dance amnesia
+342;crabhammer surf crunch swords_dance brick_break ice_beam ancient_power knock_off
+344;earthquake psychic shadow_ball rapid_spin explosion reflect light_screen ice_beam
+346;giga_drain ancient_power rock_slide earthquake recover curse confuse_ray
+348;rock_slide rock_blast earthquake brick_break swords_dance ancient_power aerial_ace rapid_spin slash metal_claw
+350;surf hydro_pump ice_beam recover haze confuse_ray rain_dance
+354;shadow_ball shadow_punch will_o_wisp knock_off night_shade thunderbolt taunt
+356;shadow_ball will_o_wisp night_shade confuse_ray ice_beam earthquake curse
+357;aerial_ace solar_beam giga_drain magical_leaf swords_dance earthquake synthesis leech_seed sunny_day
+359;swords_dance slash faint_attack shadow_ball iron_tail quick_attack baton_pass aerial_ace thunderbolt
+362;ice_beam blizzard crunch explosion earthquake shadow_ball icy_wind hail
+365;surf hydro_pump ice_beam blizzard earthquake body_slam hail
+369;rock_slide earthquake surf waterfall ancient_power double_edge amnesia rain_dance
+373;dragon_dance dragon_claw earthquake rock_slide aerial_ace flamethrower fire_blast hydro_pump crunch double_edge brick_break
+376;meteor_mash earthquake psychic agility explosion rock_slide shadow_ball brick_break iron_defense aerial_ace
+377;rock_slide earthquake explosion superpower brick_break ancient_power curse
+378;ice_beam blizzard thunderbolt explosion amnesia curse icy_wind
+379;iron_tail metal_claw earthquake explosion amnesia iron_defense curse thunderbolt ice_beam shadow_ball seismic_toss
+380;dragon_claw mist_ball psychic calm_mind recover thunderbolt ice_beam earthquake surf shadow_ball
+381;dragon_claw luster_purge psychic calm_mind recover thunderbolt ice_beam earthquake surf shadow_ball
+382;water_spout surf hydro_pump ice_beam thunder calm_mind earthquake
+383;earthquake fire_blast flamethrower overheat eruption solar_beam swords_dance rock_slide bulk_up
+384;dragon_dance outrage dragon_claw earthquake extreme_speed overheat flamethrower thunderbolt ice_beam aerial_ace
+385;psychic calm_mind thunderbolt ice_punch fire_punch thunder_punch iron_tail body_slam
+386;psycho_boost superpower extreme_speed shadow_ball thunderbolt ice_beam fire_blast brick_break calm_mind agility

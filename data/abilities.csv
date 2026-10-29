@@ -1,0 +1,299 @@
+id;nom;actif;desc;desc_en
+ADAPTABILITY;Adaptabilité;1;Même type : ×2 au lieu de ×1,5;Same-type moves: ×2 instead of ×1.5
+AERILATE;Peau Céleste;1;Normal devient Vol, +20 %;Normal moves become Flying, +20 %
+AIR_LOCK;Air Lock;1;Annule les effets de la météo;Cancels the effects of weather
+ANALYTIC;Analyste;1;+30 % en agissant en dernier;+30 % when moving last
+ANGER_POINT;Colérique;1;Coup critique reçu : ATQ max.;Hit by a critical: max ATTACK
+ANTICIPATION;Anticipation;0;Sans effet ici;No effect in this game
+AURA_GUARD;Aura Garde;0;Sans effet ici;No effect in this game
+BAD_DREAMS;Mauvais Rêve;1;L'ennemi endormi perd 1/8 PV;Sleeping foe loses 1/8 HP
+BERSERK;Berserk;1;Sous 1/2 PV : ATQ. SPÉ. +1;Below 1/2 HP: SP. ATK +1
+BIG_PECKS;Cœur de Coq;1;Sa DÉFENSE ne peut baisser;Its DEFENSE cannot be lowered
+BLAZE;Brasier;1;Feu +50 % sous 1/3 des PV;Fire +50 % below 1/3 HP
+BULLETPROOF;Pare-Balles;0;Sans effet ici;No effect in this game
+CHLOROPHYLL;Chlorophylle;1;VITESSE ×2 au soleil;SPEED ×2 in sunshine
+CLEAR_BODY;Corps Sain;1;Ses stats ne peuvent baisser;Its stats cannot be lowered
+CLOUD_NINE;Ciel Gris;1;Annule les effets de la météo;Cancels the effects of weather
+COMPETITIVE;Battant;1;Stat baissée : ATQ. SPÉ. +2;Stat lowered: SP. ATK +2
+CONTRARY;Contestation;1;Inverse ses changements de stats;Reverses its stat changes
+CORROSION;Corrosion;1;Empoisonne même Acier et Poison;Poisons even Steel and Poison
+CURSED_BODY;Corps Maudit;0;Sans effet ici;No effect in this game
+CUTE_CHARM;Joli Sourire;0;Sans effet ici;No effect in this game
+DAMP;Moiteur;1;Empêche les explosions;Prevents explosions
+DARK_AURA;Aura Ténébr.;1;Ténèbres +33 % pour tous;Dark +33 % for everyone
+DAUNTLESS_SHIELD;Bouclier In.;1;DÉFENSE +1 à l'entrée;DEFENSE +1 on entry
+DEFIANT;Acharné;1;Stat baissée : ATTAQUE +2;Stat lowered: ATTACK +2
+DOWNLOAD;Télécharge;1;ATQ. ou ATQ. SPÉ. +1 à l'entrée;ATK or SP. ATK +1 on entry
+DRAGONIZE;Draconisation;1;Normal devient Dragon, +20 %;Normal moves become Dragon, +20 %
+DRIZZLE;Crachin;1;Fait pleuvoir à l'entrée;Summons rain on entry
+DROUGHT;Sécheresse;1;Fait briller le soleil à l'entrée;Summons harsh sunlight on entry
+EARLY_BIRD;Matinal;1;Se réveille deux fois plus vite;Wakes up twice as fast
+EELEVATE;Ohmlévitation;1;Immunisé au Sol ;"Immune to Ground; KO: stat +1"
+EFFECT_SPORE;Pose Spore;1;Contact : peut endormir, etc.;Contact: may cause sleep, etc.
+ELECTRIC_SURGE;Créa-Élec;1;Crée un Champ Électrifié;Sets up Electric Terrain
+EMERGENCY_EXIT;Escampette;0;Sans effet ici;No effect in this game
+FAIRY_AURA;Aura Féérique;1;Fée +33 % pour tous;Fairy +33 % for everyone
+FILTER;Filtre;1;Super efficace : dégâts -25 %;Super effective: -25 % damage
+FIRE_MANE;Crinière Feu;1;Attaques Feu +50 %;Fire moves +50 %
+FLAME_BODY;Corps Ardent;1;Contact : peut brûler;Contact: may burn
+FLASH_FIRE;Torche;1;Absorbe le Feu et s'en renforce;Absorbs Fire and gets stronger
+FRISK;Fouille;0;Sans effet ici;No effect in this game
+FULL_METAL_BODY;Métallo-Garde;1;Ses stats ne peuvent baisser;Its stats cannot be lowered
+GALE_WINGS;Ailes Bourr.;1;PV max : attaques Vol en premier;Full HP: Flying moves go first
+GLUTTONY;Gloutonnerie;0;Sans effet ici;No effect in this game
+GOOD_AS_GOLD;Corps en Or;1;Immunisé aux attaques de statut;Immune to status moves
+GOOEY;Poisseux;1;Contact : VITESSE ennemie -1;Contact: foe's SPEED -1
+GRASSY_SURGE;Créa-Herbe;1;Crée un Champ Herbu;Sets up Grassy Terrain
+GUTS;Cran;1;Avec un statut : ATTAQUE ×1,5;With a status: ATTACK ×1.5
+HADRON_ENGINE;Moteur Hadron;1;Champ Électrifié, ATQ.S ×1,33;Electric Terrain, SP. ATK ×1.33
+HEALER;Cœur Soin;0;Sans effet ici;No effect in this game
+HEAVY_METAL;Heavy Metal;0;Sans effet ici;No effect in this game
+HUGE_POWER;Coloforce;1;ATTAQUE ×2;ATTACK ×2
+HUSTLE;Agitation;1;ATQ. ×1,5, précision -20 %;ATK ×1.5, accuracy -20 %
+HYDRATION;Hydratation;1;Guérit son statut sous la pluie;Heals its status in the rain
+HYPER_CUTTER;Hyper Cutter;1;Son ATTAQUE ne peut baisser;Its ATTACK cannot be lowered
+ICE_BODY;Corps Gel;1;Récupère 1/16 PV sous la neige;Recovers 1/16 HP in snow
+ILLUMINATE;Lumiattir.;0;Sans effet ici;No effect in this game
+IMMUNITY;Vaccin;1;Ne peut être empoisonné;Cannot be poisoned
+INFILTRATOR;Infiltration;1;Ignore murs et clones;Ignores screens and substitutes
+INNARDS_OUT;Expuls'Organ;0;Sans effet ici;No effect in this game
+INNER_FOCUS;Attention;1;N'a jamais peur, ni d'Intimidation;Never flinches, ignores Intimidate
+INSOMNIA;Insomnia;1;Ne peut s'endormir;Cannot fall asleep
+INTIMIDATE;Intimidation;1;Entrée : ATTAQUE ennemie -1;Entry: foe's ATTACK -1
+INTREPID_SWORD;Lame Indompt.;1;ATTAQUE +1 à l'entrée;ATTACK +1 on entry
+IRON_BARBS;Épine de Fer;1;Contact : l'ennemi perd 1/8 PV;Contact: attacker loses 1/8 HP
+IRON_FIST;Poing de Fer;1;Coups de poing +20 %;Punching moves +20 %
+JUSTIFIED;Cœur Noble;1;Touché par Ténèbres : ATQ +1;Hit by Dark: ATK +1
+KEEN_EYE;Regard Vif;1;Sa précision ne peut baisser;Its accuracy cannot be lowered
+KLUTZ;Maladresse;0;Sans effet ici;No effect in this game
+LEAF_GUARD;Feuille Garde;1;Aucun statut au soleil;No status in sunshine
+LEVITATE;Lévitation;1;Immunisé aux attaques Sol;Immune to Ground moves
+LIBERO;Libéro;1;Prend le type de son attaque;Takes the type of its move
+LIGHTNING_ROD;Paratonnerre;1;Absorbe l'Électrik : ATQ.S +1;Absorbs Electric: SP. ATK +1
+LIGHT_METAL;Light Metal;0;Sans effet ici;No effect in this game
+LIMBER;Échauffement;1;Ne peut être paralysé;Cannot be paralyzed
+LIQUID_VOICE;Hydrophonie;1;Attaques sonores de type Eau;Sound moves become Water
+LONG_REACH;Longue Portée;1;Ses attaques ne font pas contact;Its moves make no contact
+MAGICIAN;Magicien;0;Sans effet ici;No effect in this game
+MAGIC_BOUNCE;Miroir Magik;1;Renvoie les attaques de statut;Reflects status moves
+MAGIC_GUARD;Garde Magik;1;Ne perd de PV que par attaques;Only loses HP to attacks
+MAGNET_PULL;Magnépiège;1;Empêche l'Acier ennemi de fuir;Stops foe Steel types fleeing
+MARVEL_SCALE;Écaille Spé.;1;Avec un statut : DÉFENSE ×1,5;With a status: DEFENSE ×1.5
+MEGA_LAUNCHER;Méga Blaster;1;Attaques d'onde +50 %;Pulse moves +50 %
+MEGA_SOL;Méga Soleil;1;Attaque comme au soleil;Attacks as if in sunshine
+MERCILESS;Cruauté;1;Critique sur un ennemi empoisonné;Always crits a poisoned foe
+MINUS;Moins;0;Sans effet ici;No effect in this game
+MIRROR_ARMOR;Armure Miroir;1;Renvoie les baisses de stats;Bounces back stat drops
+MOLD_BREAKER;Brise Moule;1;Ignore les talents ennemis;Ignores the foe's ability
+MOTOR_DRIVE;Motorisé;1;Absorbe l'Électrik : VIT +1;Absorbs Electric: SPEED +1
+MOXIE;Impudence;1;Met K.O. : ATTAQUE +1;KOs a foe: ATTACK +1
+MULTISCALE;Multiécaille;1;PV max : dégâts reçus /2;Full HP: damage taken halved
+NATURAL_CURE;Médic Nature;1;Guérit son statut en sortant;Heals its status when switching
+NO_GUARD;Annule Garde;1;Toutes les attaques touchent;Every move hits
+OBLIVIOUS;Benêt;0;Sans effet ici;No effect in this game
+ORICHALCUM_PULSE;Pouls Orich.;1;Fait briller le soleil, ATQ +33 %;Summons sunlight, ATK +33 %
+OVERCOAT;Envelocape;1;Ignore météo et poudres;Ignores weather and powders
+OVERGROW;Engrais;1;Plante +50 % sous 1/3 des PV;Grass +50 % below 1/3 HP
+OWN_TEMPO;Tempo Perso;1;Ne peut être confus;Cannot be confused
+PARENTAL_BOND;Amour Filial;1;Frappe 2 fois (2e coup : 25 %);Hits twice (2nd hit: 25 %)
+PICKPOCKET;Pickpocket;0;Sans effet ici;No effect in this game
+PIERCING_DRILL;Foreuse;1;Le contact traverse les Abri;Contact goes through Protect
+PIXILATE;Peau Féérique;1;Normal devient Fée, +20 %;Normal moves become Fairy, +20 %
+PLUS;Plus;0;Sans effet ici;No effect in this game
+POISON_HEAL;Soin Poison;1;Empoisonné : récupère 1/8 PV;Poisoned: recovers 1/8 HP
+POISON_POINT;Point Poison;1;Contact : peut empoisonner;Contact: may poison
+PRANKSTER;Farceur;1;Attaques de statut en premier;Status moves go first
+PRESSURE;Pression;1;L'ennemi use 2 PP par attaque;Foe uses 2 PP per move
+PROTEAN;Protéen;1;Prend le type de son attaque;Takes the type of its move
+PURE_POWER;Force Pure;1;ATTAQUE ×2;ATTACK ×2
+PURIFYING_SALT;Sel Purif.;1;Aucun statut ;"No status; Ghost taken /2"
+QUICK_FEET;Pied Véloce;1;Avec un statut : VITESSE ×1,5;With a status: SPEED ×1.5
+RAIN_DISH;Cuvette;1;Récupère 1/16 PV sous la pluie;Recovers 1/16 HP in the rain
+RECKLESS;Téméraire;1;Attaques à recul +20 %;Recoil moves +20 %
+REGENERATOR;Régé-Force;1;Récupère 1/3 PV en sortant;Recovers 1/3 HP when switching
+RIVALRY;Rivalité;0;Sans effet ici;No effect in this game
+ROCK_HEAD;Tête de Roc;1;Aucun dégât de recul;No recoil damage
+ROUGH_SKIN;Peau Dure;1;Contact : l'ennemi perd 1/8 PV;Contact: attacker loses 1/8 HP
+SAND_FORCE;Force Sable;1;Roche, Sol, Acier +30 % (sable);Rock, Ground, Steel +30 % (sand)
+SAND_RUSH;Baigne Sable;1;VITESSE ×2 dans le sable;SPEED ×2 in a sandstorm
+SAND_STREAM;Sable Volant;1;Lève une tempête de sable;Whips up a sandstorm
+SAND_VEIL;Voile Sable;1;Esquive dans le sable;Evasion up in a sandstorm
+SAP_SIPPER;Herbivore;1;Absorbe la Plante : ATQ +1;Absorbs Grass: ATK +1
+SCRAPPY;Querelleur;1;Normal et Combat touchent Spectre;Normal and Fighting hit Ghost
+SERENE_GRACE;Sérénité;1;Effets secondaires ×2;Added effects ×2
+SHADOW_SHIELD;Spectro-Bouc.;1;PV max : dégâts reçus /2;Full HP: damage taken halved
+SHADOW_TAG;Marque Ombre;1;L'ennemi ne peut pas fuir;The foe cannot flee
+SHARPNESS;Tranchant;1;Attaques tranchantes +50 %;Slicing moves +50 %
+SHED_SKIN;Mue;1;Peut guérir son statut;May heal its status
+SHEER_FORCE;Sans Limite;1;+30 %, sans effets secondaires;+30 %, no added effects
+SHELL_ARMOR;Coque Armure;1;Ne subit pas de critique;Cannot take critical hits
+SKILL_LINK;Multi-Coups;1;Attaques multiples : 5 coups;Multi-hit moves: 5 hits
+SNIPER;Sniper;1;Coups critiques plus forts;Stronger critical hits
+SNOW_CLOAK;Rideau Neige;1;Esquive sous la neige;Evasion up in snow
+SNOW_WARNING;Alerte Neige;1;Fait neiger à l'entrée;Summons snow on entry
+SOLAR_POWER;Force Soleil;1;Soleil : ATQ.S ×1,5, perd des PV;Sun: SP. ATK ×1.5, loses HP
+SOLID_ROCK;Solide Roc;1;Super efficace : dégâts -25 %;Super effective: -25 % damage
+SOUNDPROOF;Anti-Bruit;1;Immunisé aux attaques sonores;Immune to sound moves
+SPEED_BOOST;Turbo;1;VITESSE +1 à chaque tour;SPEED +1 every turn
+STALL;Frein;0;Sans effet ici;No effect in this game
+STALWART;Nerfs d'Acier;0;Sans effet ici;No effect in this game
+STATIC;Statik;1;Contact : peut paralyser;Contact: may paralyze
+STEADFAST;Impassible;1;A peur : VITESSE +1;Flinches: SPEED +1
+STRONG_JAW;Prognathe;1;Morsures +50 %;Biting moves +50 %
+STURDY;Fermeté;1;PV max : survit à un coup fatal;Full HP: survives a fatal hit
+SUCTION_CUPS;Ventouse;1;Ne peut être chassé;Cannot be forced out
+SUPER_LUCK;Chanceux;1;Coups critiques plus fréquents;More frequent critical hits
+SUPREME_OVERLORD;Général Supr.;1;+10 % par allié K.O.;+10 % per fainted ally
+SWARM;Essaim;1;Insecte +50 % sous 1/3 des PV;Bug +50 % below 1/3 HP
+SWIFT_SWIM;Glissade;1;VITESSE ×2 sous la pluie;SPEED ×2 in the rain
+SYNCHRONIZE;Synchro;1;Renvoie brûlure, poison, paralysie;Passes on burn, poison, paralysis
+TANGLED_FEET;Pieds Confus;0;Sans effet ici;No effect in this game
+TECHNICIAN;Technicien;1;Attaques de 60 ou moins +50 %;Moves of 60 or less +50 %
+TELEPATHY;Télépathe;0;Sans effet ici;No effect in this game
+TERAVOLT;Téra-Voltage;1;Ignore les talents ennemis;Ignores the foe's ability
+THERMAL_EXCHANGE;Thermodynam.;1;Pas de brûlure ;"No burns; hit by Fire: ATK +1"
+THICK_FAT;Isograisse;1;Feu et Glace reçus /2;Fire and Ice taken /2
+TORRENT;Torrent;1;Eau +50 % sous 1/3 des PV;Water +50 % below 1/3 HP
+TOUGH_CLAWS;Griffe Dure;1;Attaques de contact +30 %;Contact moves +30 %
+TOXIC_DEBRIS;Débris Tox.;1;Touché : pose des Pics Toxik;Hit: lays Toxic Spikes
+TRACE;Calque;1;Copie le talent ennemi;Copies the foe's ability
+TURBOBLAZE;Turbo Brasier;1;Ignore les talents ennemis;Ignores the foe's ability
+UNAWARE;Inconscient;1;Ignore les stats modifiées ennemies;Ignores the foe's stat changes
+UNBURDEN;Délestage;1;Objet perdu : VITESSE ×2;Item lost: SPEED ×2
+UNNERVE;Tension;1;L'ennemi ne mange plus de baies;The foe can't eat Berries
+UNSEEN_FIST;Poing Invis.;1;Le contact traverse les Abri;Contact goes through Protect
+VITAL_SPIRIT;Esprit Vital;1;Ne peut s'endormir;Cannot fall asleep
+VOLT_ABSORB;Absorb Volt;1;Absorbe l'Électrik : PV +1/4;Absorbs Electric: HP +1/4
+WATER_ABSORB;Absorb Eau;1;Absorbe l'Eau : PV +1/4;Absorbs Water: HP +1/4
+WEAK_ARMOR;Armurouillée;1;Coup physique : DÉF -1, VIT +2;Physical hit: DEF -1, SPE +2
+BATTLE_ARMOR;Armurbaston;1;Ne subit pas de critique;Cannot take critical hits
+TINTED_LENS;Lentiteintée;1;Peu efficace : dégâts ×2;Not very effective: damage ×2
+BEAST_BOOST;Boost Chimère;1;Met K.O. : meilleure stat +1;KOs a foe: best stat +1
+PROTOSYNTHESIS;Paléosynthèse;1;Soleil : meilleure stat ×1,3;Sun: best stat ×1.3
+QUARK_DRIVE;Charge Quant.;1;Champ Électrifié : meilleure stat ×1,3;Electric Terrain: best stat ×1.3
+POISON_TOUCH;Toxitouche;1;Contact : peut empoisonner;Contact: may poison
+REFRIGERATE;Peau Gelée;1;Normal devient Glace, +20 %;Normal moves become Ice, +20 %
+STICKY_HOLD;Glu;1;Son objet ne peut tomber;Its item cannot be removed
+WATER_VEIL;Ignifu-Voile;1;Ne peut être brûlé;Cannot be burned
+WHITE_SMOKE;Écran Fumée;1;Ses stats ne peuvent baisser;Its stats cannot be lowered
+SLUSH_RUSH;Chasse-Neige;1;VITESSE ×2 sous la neige;SPEED ×2 in snow
+COMPOUND_EYES;Œil Composé;1;Précision +30 %;Accuracy +30 %
+SHIELD_DUST;Écran Poudre;1;Pas d'effets secondaires reçus;Blocks added effects
+LIQUID_OOZE;Suintement;1;Drainer ce Pokémon fait mal;Draining this POKéMON hurts
+DRY_SKIN;Peau Sèche;1;Absorbe l'Eau ;"Absorbs Water; Fire taken +25 %"
+STAMINA;Endurance;1;Touché : DÉFENSE +1;Hit: DEFENSE +1
+MISTY_SURGE;Créa-Brume;1;Crée un Champ Brumeux;Sets up Misty Terrain
+PSYCHIC_SURGE;Créa-Psy;1;Crée un Champ Psychique;Sets up Psychic Terrain
+ARENA_TRAP;Piège Sable;1;L'ennemi au sol ne peut fuir;Grounded foes cannot flee
+MAGMA_ARMOR;Armumagma;1;Ne peut être gelé;Cannot be frozen
+HEATPROOF;Ignifugé;1;Feu reçu /2;Fire taken /2
+FLUFFY;Boule de Poils;1;Contact reçu /2, Feu reçu ×2;Contact taken /2, Fire taken ×2
+ICE_SCALES;Écailles Glace;1;Attaques spéciales reçues /2;Special moves taken /2
+STEELWORKER;Expert Acier;1;Attaques Acier +50 %;Steel moves +50 %
+TRANSISTOR;Transistor;1;Attaques Électrik +30 %;Electric moves +30 %
+DRAGONS_MAW;Dent de Dragon;1;Attaques Dragon +50 %;Dragon moves +50 %
+PUNK_ROCK;Punk Rock;1;Sons +30 %, sons reçus /2;Sound +30 %, sound taken /2
+GALVANIZE;Peau Électrique;1;Normal devient Électrik, +20 %;Normal moves become Electric, +20 %
+STORM_DRAIN;Lavabo;1;Absorbe l'Eau : ATQ. SPÉ. +1;Absorbs Water: SP. ATK +1
+SURGE_SURFER;Surf Caudal;1;Champ Électrifié : VITESSE ×2;Electric Terrain: SPEED ×2
+AFTERMATH;Boom Final;1;K.O. par contact : 1/4 PV ennemis;KO'd by contact: foe loses 1/4 HP
+SWEET_VEIL;Gluco-Voile;1;Ne peut s'endormir;Cannot fall asleep
+CHILLING_NEIGH;Blanche Ruade;1;Met K.O. : ATTAQUE +1;KOs a foe: ATTACK +1
+GRIM_NEIGH;Sombre Ruade;1;Met K.O. : ATQ. SPÉ. +1;KOs a foe: SP. ATK +1
+SWORD_OF_RUIN;Épée du Fléau;1;DÉFENSE ennemie ×0,75;Foe's DEFENSE ×0.75
+BEADS_OF_RUIN;Perles du Fléau;1;DÉF. SPÉ. ennemie ×0,75;Foe's SP. DEF ×0.75
+TABLETS_OF_RUIN;Bois du Fléau;1;ATTAQUE ennemie ×0,75;Foe's ATTACK ×0.75
+VESSEL_OF_RUIN;Urne du Fléau;1;ATQ. SPÉ. ennemie ×0,75;Foe's SP. ATK ×0.75
+ARMOR_TAIL;Queue Armure;1;Bloque les attaques prioritaires;Blocks priority moves
+QUEENLY_MAJESTY;Prestance Roy.;1;Bloque les attaques prioritaires;Blocks priority moves
+DAZZLING;Corps Coloré;1;Bloque les attaques prioritaires;Blocks priority moves
+EARTH_EATER;Absorbe-Terre;1;Absorbe le Sol : PV +1/4;Absorbs Ground: HP +1/4
+GUARD_DOG;Chien de Garde;1;Intimidé : ATTAQUE +1;Intimidated: ATTACK +1
+TOXIC_BOOST;Rage Poison;1;Empoisonné : physique ×1,5;Poisoned: physical ×1.5
+FLARE_BOOST;Rage Brûlure;1;Brûlé : spécial ×1,5;Burned: special ×1.5
+VICTORY_STAR;Victorieux;1;Précision +10 %;Accuracy +10 %
+DEFEATIST;Défaitiste;1;Sous 1/2 PV : attaques /2;Below 1/2 HP: attacks /2
+WATER_BUBBLE;Aquabulle;1;Eau ×2, Feu reçu /2, pas brûlé;Water ×2, Fire taken /2, no burn
+WATER_COMPACTION;Sable Humide;1;Touché par l'Eau : DÉF +2;Hit by Water: DEF +2
+PRISM_ARMOR;Prisme-Armure;1;Super efficace : dégâts -25 %;Super effective: -25 % damage
+STEAM_ENGINE;Mach. Vapeur;1;Touché par Feu/Eau : VIT max.;Hit by Fire/Water: max SPEED
+STEELY_SPIRIT;Boost Acier;1;Attaques Acier +50 %;Steel moves +50 %
+PASTEL_VEIL;Voile Pastel;1;Ne peut être empoisonné;Cannot be poisoned
+SPICY_SPRAY;Spray Piquant;1;Touché : brûle l'attaquant;Hit: burns the attacker
+TRUANT;Absentéisme;1;N'agit qu'un tour sur deux;Only acts every other turn
+RUN_AWAY;Fuite;0;Sans effet ici;No effect in this game
+STENCH;Puanteur;0;Sans effet ici;No effect in this game
+WONDER_SKIN;Peau Miracle;0;Sans effet ici;No effect in this game
+RATTLED;Phobique;0;Sans effet ici;No effect in this game
+HARVEST;Récolte;0;Sans effet ici;No effect in this game
+MOODY;Lunatique;0;Sans effet ici;No effect in this game
+ILLUSION;Illusion;0;Sans effet ici;No effect in this game
+SOUL_HEART;Animacœur;0;Sans effet ici;No effect in this game
+WIND_POWER;Turbine;0;Sans effet ici;No effect in this game
+MYCELIUM_MIGHT;Force Mycélium;0;Sans effet ici;No effect in this game
+COSTAR;Costar;0;Sans effet ici;No effect in this game
+CUD_CHEW;Ruminant;0;Sans effet ici;No effect in this game
+ELECTROMORPHOSIS;Dynamo;0;Sans effet ici;No effect in this game
+ZEN_MODE;Mode Transe;0;Sans effet ici;No effect in this game
+MUMMY;Momie;0;Sans effet ici;No effect in this game
+STANCE_CHANGE;Déclic Tactique;0;Sans effet ici;No effect in this game
+AROMA_VEIL;Aroma-Voile;0;Sans effet ici;No effect in this game
+AURA_BREAK;Aura Inversée;0;Sans effet ici;No effect in this game
+DISGUISE;Fantômasque;0;Sans effet ici;No effect in this game
+CHEEK_POUCH;Bajoues;0;Sans effet ici;No effect in this game
+SAND_SPIT;Expul'Sable;0;Sans effet ici;No effect in this game
+GULP_MISSILE;Dégobage;0;Sans effet ici;No effect in this game
+PROPELLER_TAIL;Hélice Caudale;0;Sans effet ici;No effect in this game
+PERISH_BODY;Corps Condamné;0;Sans effet ici;No effect in this game
+WANDERING_SPIRIT;Âme Vagabonde;0;Sans effet ici;No effect in this game
+POWER_SPOT;Cercle Énergie;0;Sans effet ici;No effect in this game
+CURIOUS_MEDICINE;Médecine Étr.;0;Sans effet ici;No effect in this game
+RIPEN;Mûrissement;0;Sans effet ici;No effect in this game
+NEUTRALIZING_GAS;Gaz Inhibiteur;0;Sans effet ici;No effect in this game
+STAKEOUT;Filature;0;Sans effet ici;No effect in this game
+WIND_RIDER;Aéroporté;0;Sans effet ici;No effect in this game
+MULTITYPE;Multitype;1;Son type suit la Plaque tenue;Its type follows its Plate
+RKS_SYSTEM;Système Alpha;1;Son type suit la ROM tenue;Its type follows its Memory
+TOXIC_CHAIN;Chaîne Toxique;1;30 % : empoisonne gravement la cible;30 %: badly poisons the target
+SIMPLE;Simple;1;Ses changements de stats sont doublés;Its stat changes are doubled
+FLOWER_VEIL;Flora-Voile;1;Plante : ses stats ne baissent pas;Grass: its stats can't drop
+FUR_COAT;Toison Épaisse;1;Dégâts physiques reçus divisés par 2;Physical damage taken halved
+PRIMORDIAL_SEA;Mer Primaire;1;Pluie permanente en entrant;Permanent rain on entry
+DESOLATE_LAND;Terre Finale;1;Soleil permanent en entrant;Permanent sun on entry
+NORMALIZE;Normalise;1;Attaques de type Normal, +20 %;All moves are Normal, +20 %
+COLOR_CHANGE;Déguisement;1;Prend le type de l'attaque reçue;Takes the type of the move taken
+GRASS_PELT;Toison Herbue;1;Champ Herbu : DÉFENSE ×1,5;Grassy Terrain: DEFENSE ×1.5
+TRIAGE;Prioguérison;1;Attaques de soin : priorité +3;Healing moves: priority +3
+COMATOSE;Comatose;1;Toujours endormi : aucun statut;Always asleep: no status
+COTTON_DOWN;Effilochage;1;Touché : VITESSE ennemie -1;Hit: foe's SPEED -1
+SCREEN_CLEANER;Brise-Barrière;1;Entrée : efface les protections;Entry: removes screens
+ICE_FACE;Tête de Gel;1;1er coup physique encaissé sans dégâts;Takes 1st physical hit unharmed
+WELL_BAKED_BODY;Corps Cuit;1;Immunisé au Feu : DÉFENSE +2;Immune to Fire: DEFENSE +2
+SEED_SOWER;Semeur;1;Touché : crée un Champ Herbu;Hit: sets up Grassy Terrain
+ANGER_SHELL;Courroupace;1;Sous 1/2 PV : ATQ, ATQ.S, VIT +1;Below 1/2 HP: ATK, SPA, SPE +1
+TANGLING_HAIR;Mèche Rebelle;1;Contact : VITESSE ennemie -1;Contact: foe's SPEED -1
+QUICK_DRAW;Tir Vif;1;30 % : agit en premier;30 %: moves first
+ROCKY_PAYLOAD;Charge Lourde;1;Attaques Roche ×1,5;Rock moves ×1.5
+GORILLA_TACTICS;Entêtement;1;ATTAQUE ×1,5, une seule attaque;ATTACK ×1.5, locked into one move
+FLOWER_GIFT;Don Floral;1;Soleil : ATTAQUE et DÉF. SPÉ. ×1,5;Sun: ATTACK and SP. DEF ×1.5
+SLOW_START;Début Calme;1;5 premiers tours : ATQ et VIT /2;First 5 turns: ATK and SPE /2
+SUPERSWEET_SYRUP;Nectar Sucré;1;Entrée : ESQUIVE ennemie -1;Entry: foe's EVASION -1
+POISON_PUPPETEER;Emprise Toxique;1;Ses poisons rendent aussi confus;Its poison also confuses
+LINGERING_AROMA;Odeur Tenace;1;Contact : l'ennemi prend ce talent;Contact: foe gets this ability
+HUNGER_SWITCH;Déclic Fringal;0;Change de forme chaque tour;Changes form every turn
+FOREWARN;Prédiction;0;Devine les attaques adverses;Foresees the foe's moves
+PICKUP;Ramassage;0;Ramasse des objets hors combat;Picks up items outside battle
+DANCER;Danseuse;0;Aime les danses;Loves dancing
+SYMBIOSIS;Symbiose;0;Partage ses objets en duo;Shares items in doubles
+HONEY_GATHER;Cherche Miel;0;Récolte du miel hors combat;Gathers honey outside battle
+RECEIVER;Receveur;0;Reprend le talent d'un allié en duo;Takes an ally's ability
+POWER_OF_ALCHEMY;Chimie Puiss.;0;Reprend le talent d'un allié en duo;Takes an ally's ability
+ZERO_TO_HERO;Supermutation;0;Change de forme hors combat;Changes form outside battle
+HOSPITALITY;Hospitalité;0;Soigne un allié en duo;Heals an ally in doubles
+MIMICRY;Mimétisme;0;Son type suit le champ;Its type follows the terrain
+FORECAST;Météo;0;Change de forme selon la météo;Changes form with the weather
+SCHOOLING;Banc;0;Forme Banc en groupe;School Form in a group
+FRIEND_GUARD;Garde Amie;0;Protège un allié en duo;Protects an ally in doubles
+OPPORTUNIST;Opportuniste;0;Copie les hausses de stats ennemies;Copies the foe's stat boosts
+COMMANDER;Commandant;0;Commande un allié en duo;Commands an ally in doubles
+TERA_SHIFT;Téra-Mutation;0;Change de forme en combat;Changes form in battle
